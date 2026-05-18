@@ -73,15 +73,15 @@ const TESTS = [
       },
       {
         q: "Which of the following is always TRUE about relations?",
-        options: ["I_A ⊆ R always", "R ∩ R⁻¹ ⊆ I_A iff R is antisymmetric", "R∘R ⊇ R iff R is transitive", "R = R⁻¹ iff R is reflexive"],
+        options: ["I<sub>A</sub> ⊆ R always", "R ∩ R⁻¹ ⊆ I<sub>A</sub> iff R is antisymmetric", "R∘R ⊇ R iff R is transitive", "R = R⁻¹ iff R is reflexive"],
         answer: 1,
-        explanation: "Key theorem: R is antisymmetric ⟺ R ∩ R⁻¹ ⊆ I_A."
+        explanation: "Key theorem: R is antisymmetric ⟺ R ∩ R⁻¹ ⊆ I<sub>A</sub>."
       },
       {
-        q: "The identity relation I_A on set A is:",
+        q: "The identity relation I<sub>A</sub> on set A is:",
         options: ["Equivalence relation only", "Partial order only", "Both equivalence relation and partial order", "Neither"],
         answer: 2,
-        explanation: "I_A is reflexive, symmetric, transitive (equivalence) AND reflexive, antisymmetric, transitive (partial order). Both simultaneously."
+        explanation: "I<sub>A</sub> is reflexive, symmetric, transitive (equivalence) AND reflexive, antisymmetric, transitive (partial order). Both simultaneously."
       },
       {
         q: "The universal relation on a non-empty set A is:",
@@ -91,9 +91,9 @@ const TESTS = [
       },
       {
         q: "If R is both symmetric and antisymmetric on A, then:",
-        options: ["R = ∅", "R ⊆ I_A", "R = A×A", "R = I_A"],
+        options: ["R = ∅", "R ⊆ I<sub>A</sub>", "R = A×A", "R = I<sub>A</sub>"],
         answer: 1,
-        explanation: "If aRb (symmetric ⟹ bRa) and antisymmetric (aRb ∧ bRa ⟹ a=b), then R can only contain pairs (a,a). So R ⊆ I_A."
+        explanation: "If aRb (symmetric ⟹ bRa) and antisymmetric (aRb ∧ bRa ⟹ a=b), then R can only contain pairs (a,a). So R ⊆ I<sub>A</sub>."
       },
       {
         q: "The relation 'x divides y' on ℤ (including negatives) is:",
