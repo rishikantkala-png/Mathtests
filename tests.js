@@ -307,4 +307,369 @@ const TESTS = [
       }
     ]
   }
+  const TESTS = [
+  // ... existing tests ...
+  {
+    id: "unit2-ode-pde-1",
+    title: "Unit 2: ODE & PDE — Test 1",
+    topics: "Laplace Transform · Inverse Laplace · Series Solutions · Bessel & Legendre Functions",
+    duration: 60,
+    questions: [
+      // ── LAPLACE TRANSFORM ──────────────────────────────────────────────
+      {
+        q: "The Laplace transform is defined as $F(p) = \\int_0^\\infty e^{-px} f(x)\\,dx$, provided the integral converges for:",
+        options: ["$p < \\gamma$", "$p > \\gamma$", "$p = 0$", "all real $p$"],
+        answer: 1,
+        explanation: "If $f(x)$ is of exponential order $\\gamma$, the Laplace integral converges for $p > \\gamma$."
+      },
+      {
+        q: "Which of the following functions does NOT have a Laplace transform?",
+        options: ["$e^{x^2}$", "$\\sin x$", "$e^{2x}$", "$x^3$"],
+        answer: 0,
+        explanation: "$e^{x^2}$ grows faster than any exponential $e^{\\gamma x}$, so it is not of exponential order and has no Laplace transform."
+      },
+      {
+        q: "The Laplace transform $\\mathcal{L}\\{x^n\\}$ equals:",
+        options: ["$\\dfrac{n!}{p^n}$", "$\\dfrac{n!}{p^{n+1}}$", "$\\dfrac{(n-1)!}{p^n}$", "$\\dfrac{\\Gamma(n)}{p^n}$"],
+        answer: 1,
+        explanation: "$\\mathcal{L}\\{x^n\\} = \\dfrac{n!}{p^{n+1}}$ for $n = 0,1,2,\\ldots$ using the Gamma function with $\\Gamma(n+1)=n!$."
+      },
+      {
+        q: "The value of $\\mathcal{L}\\{e^{ax}\\}$ is:",
+        options: ["$\\dfrac{1}{p+a}$", "$\\dfrac{1}{p-a}$", "$\\dfrac{a}{p^2-a^2}$", "$\\dfrac{p}{p^2-a^2}$"],
+        answer: 1,
+        explanation: "$\\mathcal{L}\\{e^{ax}\\} = \\int_0^\\infty e^{-(p-a)x}dx = \\dfrac{1}{p-a}$, valid for $p > a$."
+      },
+      {
+        q: "$\\mathcal{L}\\{\\sin ax\\}$ equals:",
+        options: ["$\\dfrac{p}{p^2+a^2}$", "$\\dfrac{a}{p^2-a^2}$", "$\\dfrac{a}{p^2+a^2}$", "$\\dfrac{p}{p^2-a^2}$"],
+        answer: 2,
+        explanation: "$\\mathcal{L}\\{\\sin ax\\} = \\dfrac{a}{p^2+a^2}$. Remember: $\\sin$ gives $a$ in numerator, $\\cos$ gives $p$."
+      },
+      {
+        q: "$\\mathcal{L}\\{\\cosh ax\\}$ equals:",
+        options: ["$\\dfrac{a}{p^2-a^2}$", "$\\dfrac{p}{p^2+a^2}$", "$\\dfrac{a}{p^2+a^2}$", "$\\dfrac{p}{p^2-a^2}$"],
+        answer: 3,
+        explanation: "$\\mathcal{L}\\{\\cosh ax\\} = \\dfrac{p}{p^2-a^2}$. Hyperbolic functions use $p^2-a^2$; $\\cosh$ gives $p$ in numerator."
+      },
+      {
+        q: "By the first shifting theorem (p-shifting), $\\mathcal{L}\\{e^{2x}\\sin 3x\\}$ equals:",
+        options: ["$\\dfrac{3}{(p+2)^2+9}$", "$\\dfrac{3}{(p-2)^2+9}$", "$\\dfrac{p-2}{(p-2)^2+9}$", "$\\dfrac{3}{p^2+9}e^{-2p}$"],
+        answer: 1,
+        explanation: "p-shifting: multiply by $e^{ax}$ replaces $p$ by $p-a$. Here $a=2$: $\\dfrac{3}{(p-2)^2+9}$."
+      },
+      {
+        q: "The Laplace transform of $f'(x)$ is:",
+        options: ["$pF(p) + f(0)$", "$pF(p) - f(0)$", "$p^2F(p) - pf(0)$", "$F(p)/p$"],
+        answer: 1,
+        explanation: "$\\mathcal{L}\\{f'(x)\\} = pF(p) - f(0)$. Initial condition $f(0)$ appears automatically."
+      },
+      {
+        q: "$\\mathcal{L}\\left\\{\\int_0^x f(t)\\,dt\\right\\}$ equals:",
+        options: ["$pF(p)$", "$F(p) - f(0)/p$", "$F(p)/p$", "$F'(p)$"],
+        answer: 2,
+        explanation: "Integrating in $x$-domain divides by $p$ in $p$-domain: $\\mathcal{L}\\left\\{\\int_0^x f(t)dt\\right\\} = F(p)/p$."
+      },
+      {
+        q: "$\\mathcal{L}\\{x f(x)\\}$ equals:",
+        options: ["$F'(p)$", "$-F'(p)$", "$F(p)/p$", "$pF(p)$"],
+        answer: 1,
+        explanation: "Multiplying by $x$ in $x$-domain differentiates and negates in $p$-domain: $\\mathcal{L}\\{xf(x)\\} = -F'(p)$."
+      },
+      {
+        q: "$\\mathcal{L}\\left\\{\\dfrac{\\sin x}{x}\\right\\}$ equals:",
+        options: ["$\\arctan p$", "$\\dfrac{\\pi}{2} + \\arctan p$", "$\\dfrac{\\pi}{2} - \\arctan p$", "$\\ln(p^2+1)$"],
+        answer: 2,
+        explanation: "Using division by $x$: $\\int_p^\\infty \\dfrac{du}{u^2+1} = \\dfrac{\\pi}{2} - \\arctan p$. Setting $p=0$ gives the Dirichlet integral $\\pi/2$."
+      },
+      {
+        q: "The Dirichlet integral $\\displaystyle\\int_0^\\infty \\dfrac{\\sin x}{x}\\,dx$ equals:",
+        options: ["$0$", "$1$", "$\\dfrac{\\pi}{4}$", "$\\dfrac{\\pi}{2}$"],
+        answer: 3,
+        explanation: "From $\\mathcal{L}\\{\\sin x/x\\} = \\pi/2 - \\arctan p$, putting $p=0$: integral $= \\pi/2$."
+      },
+      {
+        q: "The initial value theorem states $\\lim_{x \\to 0^+} f(x)$ equals:",
+        options: ["$\\lim_{p\\to 0} F(p)$", "$\\lim_{p\\to\\infty} pF(p)$", "$\\lim_{p\\to 0} pF(p)$", "$\\lim_{p\\to\\infty} F(p)$"],
+        answer: 1,
+        explanation: "Initial value theorem: $f(0^+) = \\lim_{p\\to\\infty} pF(p)$. Large $p$ corresponds to small $x$ (initial behaviour)."
+      },
+      {
+        q: "The final value theorem $\\lim_{x\\to\\infty}f(x) = \\lim_{p\\to 0}pF(p)$ is valid when:",
+        options: ["$F(p)$ has poles on imaginary axis", "$f(x)$ has a finite limit as $x\\to\\infty$", "$f(x) = \\sin x$", "always valid"],
+        answer: 1,
+        explanation: "Final value theorem requires $f(x)$ to actually converge as $x\\to\\infty$. It fails for oscillating functions like $\\sin x$."
+      },
+      {
+        q: "$\\mathcal{L}\\{x\\sin ax\\}$ equals:",
+        options: ["$\\dfrac{a}{(p^2+a^2)^2}$", "$\\dfrac{p^2-a^2}{(p^2+a^2)^2}$", "$\\dfrac{2ap}{(p^2+a^2)^2}$", "$\\dfrac{2a}{(p^2+a^2)^2}$"],
+        answer: 2,
+        explanation: "$\\mathcal{L}\\{x\\sin ax\\} = -\\dfrac{d}{dp}\\left(\\dfrac{a}{p^2+a^2}\\right) = \\dfrac{2ap}{(p^2+a^2)^2}$."
+      },
+      {
+        q: "Which of the following does NOT have a Laplace transform using the division by $x$ formula?",
+        options: ["$\\dfrac{\\sin ax}{x}$", "$\\dfrac{1-e^{-x}}{x}$", "$\\dfrac{\\cos ax}{x}$", "$\\dfrac{e^{ax}-e^{bx}}{x}$"],
+        answer: 2,
+        explanation: "$\\lim_{x\\to 0^+}\\dfrac{\\cos ax}{x} = \\infty$, so the limit condition fails. The formula requires $\\lim_{x\\to 0^+}f(x)/x$ to be finite."
+      },
+      // ── INVERSE LAPLACE ────────────────────────────────────────────────
+      {
+        q: "$\\mathcal{L}^{-1}\\left\\{\\dfrac{1}{p^4}\\right\\}$ equals:",
+        options: ["$x^3$", "$\\dfrac{x^3}{6}$", "$\\dfrac{x^4}{24}$", "$3x^2$"],
+        answer: 1,
+        explanation: "$\\mathcal{L}^{-1}\\left\\{\\dfrac{1}{p^{n+1}}\\right\\} = \\dfrac{x^n}{n!}$. Here $n=3$: $\\dfrac{x^3}{3!} = \\dfrac{x^3}{6}$."
+      },
+      {
+        q: "$\\mathcal{L}^{-1}\\left\\{\\dfrac{1}{(p-2)^3}\\right\\}$ equals:",
+        options: ["$x^2 e^{2x}$", "$\\dfrac{x^2 e^{2x}}{2}$", "$2xe^{2x}$", "$\\dfrac{x e^{2x}}{2}$"],
+        answer: 1,
+        explanation: "p-shifting: $\\mathcal{L}^{-1}\\left\\{\\dfrac{1}{p^3}\\right\\} = \\dfrac{x^2}{2}$, then replace $p\\to p-2$: multiply by $e^{2x}$. Answer: $\\dfrac{x^2 e^{2x}}{2}$."
+      },
+      {
+        q: "$\\mathcal{L}^{-1}\\left\\{\\dfrac{p+1}{(p+1)^2+4}\\right\\}$ equals:",
+        options: ["$\\cos 2x$", "$e^{-x}\\sin 2x$", "$e^{x}\\cos 2x$", "$e^{-x}\\cos 2x$"],
+        answer: 3,
+        explanation: "Recognise pattern $\\dfrac{p-a}{(p-a)^2+b^2} = e^{ax}\\cos bx$. Here $a=-1$, $b=2$: $e^{-x}\\cos 2x$."
+      },
+      {
+        q: "Using Heaviside's formula, $\\mathcal{L}^{-1}\\left\\{\\dfrac{1}{(p-1)(p-2)}\\right\\}$ equals:",
+        options: ["$e^x + e^{2x}$", "$e^x - e^{2x}$", "$e^{2x} - e^x$", "$-e^x + 2e^{2x}$"],
+        answer: 2,
+        explanation: "Residue at $p=1$: $\\dfrac{e^x}{1-2} = -e^x$. Residue at $p=2$: $\\dfrac{e^{2x}}{2-1} = e^{2x}$. Sum: $e^{2x}-e^x$."
+      },
+      {
+        q: "The convolution of $f(x)$ and $g(x)$ is defined as:",
+        options: ["$f(x)\\cdot g(x)$", "$\\displaystyle\\int_{-\\infty}^{\\infty}f(t)g(x-t)\\,dt$", "$\\displaystyle\\int_0^x f(t)g(x-t)\\,dt$", "$f(g(x))$"],
+        answer: 2,
+        explanation: "Convolution for Laplace: $(f*g)(x) = \\int_0^x f(t)g(x-t)\\,dt$ (lower limit 0, not $-\\infty$)."
+      },
+      {
+        q: "By the convolution theorem, $\\mathcal{L}^{-1}\\{F(p)\\cdot G(p)\\}$ equals:",
+        options: ["$f(x)\\cdot g(x)$", "$f(x) + g(x)$", "$\\displaystyle\\int_0^x f(t)g(x-t)\\,dt$", "$f(x-t)g(t)$"],
+        answer: 2,
+        explanation: "Convolution theorem: $\\mathcal{L}^{-1}\\{F\\cdot G\\} = \\int_0^x f(t)g(x-t)\\,dt = f*g$."
+      },
+      {
+        q: "$\\mathcal{L}^{-1}\\left\\{\\dfrac{1}{(p^2+1)^2}\\right\\}$ equals:",
+        options: ["$\\dfrac{\\sin x - x\\cos x}{2}$", "$\\dfrac{x\\sin x}{2}$", "$\\sin x\\cos x$", "$\\dfrac{\\cos x - x\\sin x}{2}$"],
+        answer: 0,
+        explanation: "Using convolution with $f=g=\\sin x$: $\\int_0^x \\sin t\\sin(x-t)\\,dt = \\dfrac{\\sin x - x\\cos x}{2}$."
+      },
+      {
+        q: "$\\mathcal{L}^{-1}\\left\\{\\dfrac{e^{-2p}}{p^2+1}\\right\\}$ equals:",
+        options: ["$\\sin(x-2)$", "$e^{-2x}\\sin x$", "$\\sin(x-2)\\cdot u(x-2)$", "$u(x-2)\\sin x$"],
+        answer: 2,
+        explanation: "x-shifting: factor $e^{-ap}$ delays by $a$. Here $a=2$: $\\mathcal{L}^{-1}\\{1/(p^2+1)\\} = \\sin x$, so result is $\\sin(x-2)\\cdot u(x-2)$."
+      },
+      // ── SERIES SOLUTIONS ───────────────────────────────────────────────
+      {
+        q: "For the ODE $y'' + P(x)y' + Q(x)y = 0$, a point $x=x_0$ is ordinary if:",
+        options: ["$P(x_0) = 0$", "$P(x)$ and $Q(x)$ are analytic at $x_0$", "$P(x_0)$ is undefined", "$Q(x_0) = \\infty$"],
+        answer: 1,
+        explanation: "$x_0$ is an ordinary point if both $P(x)$ and $Q(x)$ are analytic (have convergent power series) at $x_0$."
+      },
+      {
+        q: "The point $x=0$ for Bessel's equation $x^2y''+xy'+(x^2-n^2)y=0$ is:",
+        options: ["Ordinary point", "Irregular singular point", "Regular singular point", "Not a singular point"],
+        answer: 2,
+        explanation: "$P(x)=1/x$ fails at $x=0$, but $xP(x)=1$ and $x^2Q(x)=x^2-n^2$ are both analytic. So $x=0$ is a regular singular point."
+      },
+      {
+        q: "In the Frobenius method, the solution is assumed of the form:",
+        options: ["$y = \\sum_{n=0}^\\infty a_n x^n$", "$y = e^{rx}\\sum_{n=0}^\\infty a_n x^n$", "$y = x^r\\sum_{n=0}^\\infty a_n x^n$", "$y = \\ln x \\sum_{n=0}^\\infty a_n x^n$"],
+        answer: 2,
+        explanation: "Frobenius method assumes $y = x^r\\sum_{n=0}^\\infty a_n x^n$ where $r$ is determined by the indicial equation."
+      },
+      {
+        q: "The indicial equation for $2xy''+y'+xy=0$ at $x=0$ is:",
+        options: ["$r^2 - r = 0$", "$r(r-\\frac{1}{2}) = 0$", "$r^2 + r = 0$", "$2r^2 - r = 0$"],
+        answer: 1,
+        explanation: "$p_0 = 1/2$, $q_0=0$. Indicial eq: $r(r-1)+\\frac{1}{2}r+0=0 \\Rightarrow r^2-\\frac{r}{2}=0 \\Rightarrow r(r-\\frac{1}{2})=0$."
+      },
+      {
+        q: "If the roots of the indicial equation differ by an integer, the second solution:",
+        options: ["Is always a pure Frobenius series", "May contain a $\\ln x$ term", "Does not exist", "Is always a polynomial"],
+        answer: 1,
+        explanation: "When roots differ by an integer, the second Frobenius solution may involve $\\ln x$. Equal roots always give $\\ln x$."
+      },
+      {
+        q: "The power series solution converges at least up to:",
+        options: ["$x = \\infty$", "The nearest singular point from the centre", "$x = 1$", "The origin always"],
+        answer: 1,
+        explanation: "The radius of convergence of the power series solution extends at least to the nearest singular point of the ODE from the centre of expansion."
+      },
+      // ── PDE CLASSIFICATION ────────────────────────────────────────────
+      {
+        q: "For $Au_{xx}+Bu_{xy}+Cu_{yy}=0$, the PDE is hyperbolic when:",
+        options: ["$B^2-4AC < 0$", "$B^2-4AC = 0$", "$B^2-4AC > 0$", "$B^2+4AC > 0$"],
+        answer: 2,
+        explanation: "Discriminant $\\Delta = B^2-4AC$: $>0$ hyperbolic, $=0$ parabolic, $<0$ elliptic. Same sign rule as conic sections."
+      },
+      {
+        q: "The heat equation $u_t = ku_{xx}$ is classified as:",
+        options: ["Elliptic", "Hyperbolic", "Parabolic", "None of these"],
+        answer: 2,
+        explanation: "Heat equation: $A=k, B=0, C=0$. $\\Delta = 0-0 = 0$. Parabolic."
+      },
+      {
+        q: "Classify $u_{xx}+4u_{xy}+4u_{yy}=0$:",
+        options: ["Elliptic", "Parabolic", "Hyperbolic", "Cannot be classified"],
+        answer: 1,
+        explanation: "$A=1,B=4,C=4$. $\\Delta = 16-16=0$. Parabolic."
+      },
+      {
+        q: "The Laplace equation $u_{xx}+u_{yy}=0$ is:",
+        options: ["Parabolic", "Hyperbolic", "Elliptic", "Mixed type"],
+        answer: 2,
+        explanation: "$A=1,B=0,C=1$. $\\Delta=0-4=-4<0$. Elliptic. Models steady-state phenomena."
+      },
+      {
+        q: "The wave equation $u_{tt} = c^2 u_{xx}$ is:",
+        options: ["Parabolic", "Elliptic", "Hyperbolic", "Parabolic for $c>1$ only"],
+        answer: 2,
+        explanation: "$A=c^2,B=0,C=-1$. $\\Delta = 0-4(c^2)(-1)=4c^2>0$. Hyperbolic for all $c\\neq 0$."
+      },
+      {
+        q: "Classify $u_{xx}-2u_{xy}+u_{yy}=0$:",
+        options: ["Elliptic", "Parabolic", "Hyperbolic", "Depends on $x,y$"],
+        answer: 1,
+        explanation: "$A=1,B=-2,C=1$. $\\Delta=4-4=0$. Parabolic."
+      },
+      {
+        q: "The standard solution of the heat equation $u_t=ku_{xx}$ on $[0,L]$ with $u(0,t)=u(L,t)=0$ is:",
+        options: ["$\\sum A_n\\cos\\frac{n\\pi x}{L}e^{-k(n\\pi/L)^2t}$", "$\\sum B_n\\sin\\frac{n\\pi x}{L}e^{-k(n\\pi/L)^2t}$", "$\\sum B_n e^{n\\pi x/L}e^{-kt}$", "$\\sum A_n\\sin\\frac{n\\pi t}{L}e^{-kx}$"],
+        answer: 1,
+        explanation: "Separation of variables with zero Dirichlet BCs gives $\\sin$ eigenfunctions and exponential decay in $t$."
+      },
+      {
+        q: "The wave equation on a finite string requires how many initial conditions?",
+        options: ["None", "One ($u$ at $t=0$)", "Two ($u$ and $u_t$ at $t=0$)", "Three"],
+        answer: 2,
+        explanation: "Wave equation is second order in $t$, so needs two initial conditions: $u(x,0)=f(x)$ and $u_t(x,0)=g(x)$."
+      },
+      {
+        q: "The maximum principle for the Laplace equation states:",
+        options: ["Maximum occurs at an interior point", "Maximum occurs on the boundary", "Maximum is always zero", "Maximum occurs at origin"],
+        answer: 1,
+        explanation: "A harmonic function ($\\nabla^2 u=0$) attains its maximum and minimum values on the boundary, not in the interior."
+      },
+      // ── BESSEL FUNCTIONS ──────────────────────────────────────────────
+      {
+        q: "$J_0(0)$ equals:",
+        options: ["$0$", "$1$", "$\\infty$", "$1/2$"],
+        answer: 1,
+        explanation: "$J_0(0)=1$ is the only Bessel function of the first kind that is non-zero at the origin."
+      },
+      {
+        q: "$J_n(0)$ for $n \\geq 1$ equals:",
+        options: ["$1$", "$n$", "$0$", "$\\infty$"],
+        answer: 2,
+        explanation: "From the series: $J_n(0) = 0$ for all $n\\geq 1$ since the lowest power is $x^n$."
+      },
+      {
+        q: "$J_{1/2}(x)$ equals:",
+        options: ["$\\sqrt{\\dfrac{2}{\\pi x}}\\cos x$", "$\\sqrt{\\dfrac{\\pi}{2x}}\\sin x$", "$\\sqrt{\\dfrac{2}{\\pi x}}\\sin x$", "$\\sqrt{\\dfrac{2}{\\pi x}}\\tan x$"],
+        answer: 2,
+        explanation: "$J_{1/2}(x) = \\sqrt{\\dfrac{2}{\\pi x}}\\sin x$. Similarly $J_{-1/2}(x) = \\sqrt{\\dfrac{2}{\\pi x}}\\cos x$."
+      },
+      {
+        q: "The recurrence relation for Bessel functions is:",
+        options: ["$J_{n+1} - J_{n-1} = \\dfrac{2n}{x}J_n$", "$J_{n-1} + J_{n+1} = \\dfrac{2n}{x}J_n$", "$J_{n-1}\\cdot J_{n+1} = J_n^2$", "$J_{n+1} = J_n - J_{n-1}$"],
+        answer: 1,
+        explanation: "$J_{n-1}(x)+J_{n+1}(x) = \\dfrac{2n}{x}J_n(x)$ is the standard recurrence. Used to find $J_{3/2}$ from $J_{1/2}$ and $J_{-1/2}$."
+      },
+      {
+        q: "$J_0'(x)$ equals:",
+        options: ["$J_1(x)$", "$-J_1(x)$", "$J_{-1}(x)$", "$-J_0(x)$"],
+        answer: 1,
+        explanation: "$\\dfrac{d}{dx}[J_0(x)] = -J_1(x)$. This is from recurrence relation (3) with $n=0$: $\\dfrac{d}{dx}[J_0] = -J_1$."
+      },
+      {
+        q: "$J_{-n}(x)$ for integer $n$ equals:",
+        options: ["$J_n(x)$", "$-J_n(x)$", "$(-1)^n J_n(x)$", "$(-1)^{n+1}J_n(x)$"],
+        answer: 2,
+        explanation: "$J_{-n}(x) = (-1)^n J_n(x)$ for integer $n$. So $J_{-1} = -J_1$, $J_{-2} = J_2$, etc."
+      },
+      {
+        q: "The first zero of $J_0(x)$ occurs at approximately:",
+        options: ["$1.202$", "$2.405$", "$3.832$", "$5.520$"],
+        answer: 1,
+        explanation: "First zero of $J_0 \\approx 2.405$, second $\\approx 5.520$. First zero of $J_1 \\approx 3.832$."
+      },
+      {
+        q: "$\\mathcal{L}\\{J_0(x)\\}$ equals:",
+        options: ["$\\dfrac{1}{p^2+1}$", "$\\dfrac{1}{\\sqrt{p^2+1}}$", "$\\dfrac{p}{p^2+1}$", "$\\dfrac{1}{p\\sqrt{p^2+1}}$"],
+        answer: 1,
+        explanation: "$\\mathcal{L}\\{J_0(x)\\} = \\dfrac{1}{\\sqrt{p^2+1}}$. More generally $\\mathcal{L}\\{J_0(ax)\\} = \\dfrac{1}{\\sqrt{p^2+a^2}}$."
+      },
+      {
+        q: "Using $J_0'(x) = -J_1(x)$, $\\mathcal{L}\\{J_1(x)\\}$ equals:",
+        options: ["$\\dfrac{1}{\\sqrt{p^2+1}}$", "$\\dfrac{p}{\\sqrt{p^2+1}}$", "$1 - \\dfrac{p}{\\sqrt{p^2+1}}$", "$\\dfrac{p}{\\sqrt{p^2+1}} - 1$"],
+        answer: 2,
+        explanation: "$\\mathcal{L}\\{J_0'\\} = p\\cdot\\dfrac{1}{\\sqrt{p^2+1}}-1$. Since $J_1=-J_0'$: $\\mathcal{L}\\{J_1\\}=1-\\dfrac{p}{\\sqrt{p^2+1}}$."
+      },
+      {
+        q: "The integral representation of $J_n(x)$ for integer $n$ is:",
+        options: ["$\\dfrac{1}{2\\pi}\\int_0^{2\\pi}e^{inx}d\\theta$", "$\\dfrac{1}{\\pi}\\int_0^\\pi\\cos(n\\theta-x\\sin\\theta)\\,d\\theta$", "$\\dfrac{1}{\\pi}\\int_0^\\pi\\sin(n\\theta)\\,d\\theta$", "$\\dfrac{1}{2}\\int_{-1}^1 e^{ixt}dt$"],
+        answer: 1,
+        explanation: "$J_n(x) = \\dfrac{1}{\\pi}\\int_0^\\pi\\cos(n\\theta-x\\sin\\theta)\\,d\\theta$. For $n=0$: $J_0(x)=\\dfrac{1}{\\pi}\\int_0^\\pi\\cos(x\\sin\\theta)\\,d\\theta$."
+      },
+      // ── LEGENDRE POLYNOMIALS ──────────────────────────────────────────
+      {
+        q: "The Legendre polynomial $P_2(x)$ equals:",
+        options: ["$x^2$", "$\\dfrac{3x^2+1}{2}$", "$\\dfrac{3x^2-1}{2}$", "$\\dfrac{x^2-1}{2}$"],
+        answer: 2,
+        explanation: "$P_2(x) = \\dfrac{1}{2}(3x^2-1)$. Verify: $P_2(1)=1$ ✓, $P_2(-1)=1=(-1)^2$ ✓."
+      },
+      {
+        q: "$P_n(1)$ equals:",
+        options: ["$0$", "$n$", "$(-1)^n$", "$1$"],
+        answer: 3,
+        explanation: "$P_n(1) = 1$ for all $n \\geq 0$. This is a direct consequence of the generating function evaluated at $x=1$."
+      },
+      {
+        q: "$P_n(-1)$ equals:",
+        options: ["$1$", "$-1$", "$(-1)^n$", "$(-1)^{n+1}$"],
+        answer: 2,
+        explanation: "$P_n(-1) = (-1)^n$. Even order: $P_n(-1)=1$; odd order: $P_n(-1)=-1$."
+      },
+      {
+        q: "Rodrigues' formula for Legendre polynomials is:",
+        options: ["$P_n(x) = \\dfrac{1}{n!}\\dfrac{d^n}{dx^n}(x^2-1)^n$", "$P_n(x) = \\dfrac{1}{2^n n!}\\dfrac{d^n}{dx^n}(x^2-1)^n$", "$P_n(x) = \\dfrac{1}{2^n}\\dfrac{d^n}{dx^n}x^n$", "$P_n(x) = \\dfrac{(-1)^n}{2^n n!}\\dfrac{d^n}{dx^n}(1-x^2)^n$"],
+        answer: 1,
+        explanation: "$P_n(x) = \\dfrac{1}{2^n n!}\\dfrac{d^n}{dx^n}(x^2-1)^n$. The factor $2^n n!$ ensures $P_n(1)=1$."
+      },
+      {
+        q: "Bonnet's recurrence relation is:",
+        options: ["$P_{n+1} = xP_n - P_{n-1}$", "$(n+1)P_{n+1} = (2n+1)xP_n - nP_{n-1}$", "$nP_{n+1} = (2n-1)xP_n - (n-1)P_{n-1}$", "$P_{n+1} = 2xP_n - P_{n-1}$"],
+        answer: 1,
+        explanation: "Bonnet's formula: $(n+1)P_{n+1}(x) = (2n+1)xP_n(x) - nP_{n-1}(x)$. Used to compute higher $P_n$ from lower ones."
+      },
+      {
+        q: "$\\displaystyle\\int_{-1}^1 P_m(x)P_n(x)\\,dx$ when $m \\neq n$ equals:",
+        options: ["$1$", "$\\dfrac{2}{2n+1}$", "$0$", "$\\dfrac{1}{n+m}$"],
+        answer: 2,
+        explanation: "Orthogonality of Legendre polynomials: $\\int_{-1}^1 P_m P_n\\,dx = 0$ when $m\\neq n$."
+      },
+      {
+        q: "$\\displaystyle\\int_{-1}^1 [P_n(x)]^2\\,dx$ equals:",
+        options: ["$1$", "$\\dfrac{1}{2n+1}$", "$\\dfrac{2}{2n+1}$", "$\\dfrac{2n+1}{2}$"],
+        answer: 2,
+        explanation: "$\\int_{-1}^1[P_n]^2\\,dx = \\dfrac{2}{2n+1}$. So $\\|P_n\\| = \\sqrt{\\dfrac{2}{2n+1}}$."
+      },
+      {
+        q: "In the Fourier-Legendre expansion $f(x)=\\sum c_n P_n(x)$, the coefficient $c_n$ is:",
+        options: ["$\\displaystyle\\int_{-1}^1 f(x)P_n(x)\\,dx$", "$\\dfrac{2n+1}{2}\\displaystyle\\int_{-1}^1 f(x)P_n(x)\\,dx$", "$\\dfrac{1}{2}\\displaystyle\\int_{-1}^1 f(x)P_n(x)\\,dx$", "$n\\displaystyle\\int_{-1}^1 f(x)P_n(x)\\,dx$"],
+        answer: 1,
+        explanation: "$c_n = \\dfrac{2n+1}{2}\\int_{-1}^1 f(x)P_n(x)\\,dx$. The factor $\\dfrac{2n+1}{2} = \\dfrac{1}{\\|P_n\\|^2}$ comes from orthogonality."
+      },
+      {
+        q: "The Fourier-Legendre expansion of $f(x) = x^2$ is:",
+        options: ["$P_2(x)$", "$P_0(x)+P_2(x)$", "$\\dfrac{1}{3}P_0(x)+\\dfrac{2}{3}P_2(x)$", "$\\dfrac{2}{3}P_0(x)+\\dfrac{1}{3}P_2(x)$"],
+        answer: 2,
+        explanation: "$x^2 = \\dfrac{1}{3}P_0+\\dfrac{2}{3}P_2$. Verify: $\\dfrac{1}{3}+\\dfrac{2}{3}\\cdot\\dfrac{3x^2-1}{2} = \\dfrac{1}{3}+x^2-\\dfrac{1}{3} = x^2$ ✓"
+      }
+    ]
+  }
 ];
+
