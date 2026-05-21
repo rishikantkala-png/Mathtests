@@ -305,8 +305,8 @@ const TESTS = [
         answer: 1,
         explanation: "NAND and NOR are both universal gates — any Boolean function can be built using only NAND or only NOR gates."
       }
-    ]
-  }
+    
+  ,
   
   // ... existing tests ...
   {
