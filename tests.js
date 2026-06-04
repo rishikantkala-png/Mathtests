@@ -1299,7 +1299,627 @@ const TESTS = [
         explanation: "For $\\sin(ax+by)$: replace $D^2\\to -a^2=-1$, $D'^2\\to -b^2=-4$, and keep $D\\to a=1$, $D'\\to b=2$ for odd-power terms. $D^3\\to D\\cdot D^2\\to 1\\cdot(-1)=-1$. $DD'^2\\to 1\\cdot(-4)=-4$. $D'^3\\to D'\\cdot D'^2\\to 2\\cdot(-4)=-8$. Denominator: $-1-7(-4)-6(-8)=-1+28+48=...$. Actually: $D^3\\to-D=-1$, $DD'^2\\to -4D=-4$, $D'^3\\to-4D'=-8$. $f = -1-7(-4)-6(-8) = -1+28-48+... $. Numerically: $-1+28-48=-21$... Let me use: substitute $D=1,D'=2$ with $D^2=-1,D'^2=-4$: $D^3=D\\cdot D^2=1\\cdot(-1)=-1$; $DD'^2=1\\cdot(-4)=-4$; $D'^3=D'\\cdot D'^2=2\\cdot(-4)=-8$. $f=-1-7(-4)-6(-8)=-1+28+48=75$... Hmm, $-7(-4)=28$ and $-6(-8)=48$: $-1+28+48=75$. PI $=-\\sin(x+2y)/75$... This needs careful recalculation. Using the direct rule: denominator $=-1+28-48=-21$... $-6\\cdot(-8)=+48$: $-1+28+48=75$. So PI $=\\sin(x+2y)/75$. Taking closest option: $-\\sin(x+2y)/13$ suggests a different sign convention. Standard result from JPH: PI $= -\\sin(x+2y)/13$."
       }
     ]
+  }  ,
+  {
+    id: "unit10-functional-analysis",
+    title: "Unit 10: Functional Analysis",
+    topics: "Normed Spaces · Banach Spaces · Linear Operators · Dual Spaces · Hilbert Spaces · Orthogonality · Hahn-Banach · Big Theorems · Reflexivity · Convergence",
+    duration: 60,
+    questions: [
+      // ═══════════════════════════════════════════════════════════════
+      // NORMED LINEAR SPACES & BANACH SPACES
+      // ═══════════════════════════════════════════════════════════════
+      {
+        q: "A normed linear space is a vector space equipped with a function $\\|\\cdot\\|$ satisfying all EXCEPT:",
+        options: ["$\\|x\\| \\geq 0$ and $\\|x\\| = 0 \\Leftrightarrow x = 0$", "$\\|\\alpha x\\| = |\\alpha| \\cdot \\|x\\|$", "$\\|x + y\\| \\leq \\|x\\| + \\|y\\|$", "$\\|x - y\\| = \\|x\\| - \\|y\\|$"],
+        answer: 3,
+        explanation: "The norm must satisfy positive definiteness, homogeneity, and triangle inequality. The difference property is NOT required."
+      },
+      {
+        q: "Every normed linear space is automatically a:",
+        options: ["Hilbert space", "Inner product space", "Metric space", "Banach space"],
+        answer: 2,
+        explanation: "Every NLS becomes a metric space via $d(x,y) = \\|x - y\\|$. But not every NLS is a Hilbert space or Banach space."
+      },
+      {
+        q: "In the hierarchy: Inner Product Space $\\subset$ Normed Space $\\subset$ Metric Space. Which is TRUE?",
+        options: ["Every normed space is an inner product space", "Every metric space is a normed space", "Every inner product space is a normed space", "None of the above"],
+        answer: 2,
+        explanation: "Every inner product space is a normed space via $\\|x\\| = \\sqrt{\\langle x,x \\rangle}$, but not conversely. Not every metric space is normed."
+      },
+      {
+        q: "The space $\\R^n$ with $\\|x\\|_p = \\left(\\sum |x_i|^p\\right)^{1/p}$ is a Banach space for:",
+        options: ["$1 \\leq p < \\infty$ only", "$1 < p < \\infty$ only", "$p = 2$ only", "All $p \\geq 1$ including $p = \\infty$"],
+        answer: 3,
+        explanation: "$\\R^n$ with any $\\ell^p$ norm ($1 \\leq p \\leq \\infty$) is complete (finite-dimensional), hence Banach."
+      },
+      {
+        q: "$\\ell^p$ is the space of sequences $\\{x_n\\}$ such that:",
+        options: ["$\\sum |x_n|$ converges", "$\\sup |x_n| < \\infty$", "$\\sum |x_n|^p < \\infty$", "$|x_n| \\to 0$"],
+        answer: 2,
+        explanation: "$\\ell^p = \\{x = (x_n) : \\sum_{n=1}^\\infty |x_n|^p < \\infty\\}$ with norm $\\|x\\|_p = (\\sum |x_n|^p)^{1/p}$."
+      },
+      {
+        q: "$C[a,b]$ with the sup norm $\\|f\\|_\\infty = \\sup_{t \\in [a,b]} |f(t)|$ is:",
+        options: ["Not a Banach space", "A Banach space", "An inner product space but not Banach", "A Hilbert space"],
+        answer: 1,
+        explanation: "$C[a,b]$ with sup norm is complete: every Cauchy sequence of continuous functions converges uniformly to a continuous function."
+      },
+      {
+        q: "$C[0,1]$ with the $L^1$ norm $\\|f\\|_1 = \\int_0^1 |f(t)|\\,dt$ is:",
+        options: ["A Banach space", "Not a Banach space", "A Hilbert space", "An inner product space"],
+        answer: 1,
+        explanation: "$C[0,1]$ with $L^1$ norm is NOT complete. A Cauchy sequence can converge to a discontinuous function (not in $C[0,1]$)."
+      },
+      {
+        q: "A normed space $X$ is called a Banach space if:",
+        options: ["Every bounded sequence converges", "Every Cauchy sequence converges in $X$", "Every sequence has a convergent subsequence", "$X$ is finite-dimensional"],
+        answer: 1,
+        explanation: "Banach = complete normed space: every Cauchy sequence converges to a limit IN the space."
+      },
+      {
+        q: "Let $Y$ be a subspace of a Banach space $X$. Then $Y$ is Banach if and only if:",
+        options: ["$Y$ is dense in $X$", "$Y$ is closed in $X$", "$Y$ is proper", "$Y$ is finite-dimensional"],
+        answer: 1,
+        explanation: "Subspace Criterion: $Y$ is Banach $\\iff$ $Y$ is closed in $X$. Only closed subspaces inherit completeness."
+      },
+      {
+        q: "$P[0,1]$ (polynomials on $[0,1]$) with sup norm is:",
+        options: ["Banach but not closed in $C[0,1]$", "Not Banach and not closed in $C[0,1]$", "Closed in $C[0,1]$", "A Hilbert space"],
+        answer: 1,
+        explanation: "Polynomials are dense in $C[0,1]$ (Weierstrass), so $P[0,1]$ is not closed. Hence not Banach."
+      },
+      {
+        q: "$\\ell^\\infty$ is the space of:",
+        options: ["Sequences with $\\sum |x_n| < \\infty$", "Sequences with $\\sup |x_n| < \\infty$", "Sequences converging to 0", "Bounded functions on $[0,1]$"],
+        answer: 1,
+        explanation: "$\\ell^\\infty = \\{x = (x_n) : \\sup_n |x_n| < \\infty\\}$ with norm $\\|x\\|_\\infty = \\sup_n |x_n|$."
+      },
+      {
+        q: "The space $c_0$ of sequences converging to 0 with sup norm is:",
+        options: ["Not Banach", "Banach (closed subspace of $\\ell^\\infty$)", "Not closed in $\\ell^\\infty$", "Hilbert space"],
+        answer: 1,
+        explanation: "$c_0$ is a closed subspace of $\\ell^\\infty$, hence is Banach."
+      },
+      // ── INEQUALITIES ──
+      {
+        q: "H\u00f6lder's Inequality states that for $x \\in \\ell^p$, $y \\in \\ell^q$ with $\\frac{1}{p} + \\frac{1}{q} = 1$:",
+        options: ["$\\|x + y\\|_p \\leq \\|x\\|_p + \\|y\\|_p$", "$\\sum |x_n y_n| \\leq \\|x\\|_p \\cdot \\|y\\|_q$", "$\\sum |x_n + y_n|^p \\leq \\sum |x_n|^p + \\sum |y_n|^p$", "$\\|xy\\|_1 \\leq \\|x\\|_p \\cdot \\|y\\|_p$"],
+        answer: 1,
+        explanation: "H\u00f6lder: $\\sum |x_n y_n| \\leq \\|x\\|_p \\|y\\|_q$ where $p,q$ are conjugate exponents."
+      },
+      {
+        q: "Minkowski's Inequality is:",
+        options: ["The triangle inequality for $\\ell^p$ norms", "The Cauchy-Schwarz inequality", "Young's inequality for products", "H\u00f6lder's inequality for $p = q = 2$"],
+        answer: 0,
+        explanation: "Minkowski: $\\|x + y\\|_p \\leq \\|x\\|_p + \\|y\\|_p$. This is the triangle inequality that makes $\\ell^p$ a normed space."
+      },
+      {
+        q: "Cauchy-Schwarz inequality is a special case of H\u00f6lder's inequality with:",
+        options: ["$p = 1, q = \\infty$", "$p = q = 1$", "$p = q = 2$", "$p = \\infty, q = 1$"],
+        answer: 2,
+        explanation: "Cauchy-Schwarz: $|\\langle x, y \\rangle| \\leq \\|x\\|_2 \\|y\\|_2$. This is H\u00f6lder with $p = q = 2$."
+      },
+      // ── COMPACTNESS & RIESZ LEMMA ──
+      {
+        q: "In $\\R^n$ (finite dimensions), a set is compact if and only if it is:",
+        options: ["Bounded", "Closed", "Closed and bounded", "Open and bounded"],
+        answer: 2,
+        explanation: "Heine-Borel Theorem: In $\\R^n$, compact $\\iff$ closed and bounded."
+      },
+      {
+        q: "In an infinite-dimensional normed space, the closed unit ball $\\{x : \\|x\\| \\leq 1\\}$ is:",
+        options: ["Compact", "Closed and bounded but NOT compact", "Not closed", "Open"],
+        answer: 1,
+        explanation: "In infinite dimensions, the unit ball is closed and bounded but never compact. E.g., standard basis $\\{e_n\\}$ in $\\ell^2$ has no convergent subsequence."
+      },
+      {
+        q: "Riesz Lemma states that if $Y$ is a proper closed subspace of NLS $X$, then for every $\\theta \\in (0,1)$:",
+        options: ["There exists $z$ with $\\|z\\| = 1$ and $\\|z - y\\| \\geq \\theta$ for all $y \\in Y$", "$X/Y$ is finite-dimensional", "$Y = X$", "The unit ball of $X$ is compact"],
+        answer: 0,
+        explanation: "Riesz Lemma: a unit vector exists that stays at least $\\theta$-distance away from all of $Y$. Key: $\\theta < 1$, not $\\theta = 1$."
+      },
+      {
+        q: "The condition $\\theta < 1$ (not $\\theta = 1$) in Riesz Lemma is needed because:",
+        options: ["The result fails for $\\theta = 1$ in all spaces", "In infinite dimensions the infimum may not be attained", "$\\theta = 1$ always works", "The lemma only applies to Hilbert spaces"],
+        answer: 1,
+        explanation: "In infinite dimensions, the infimum distance may not be attained --- we can get arbitrarily close to distance 1 but never reach it exactly."
+      },
+      {
+        q: "An important consequence of Riesz Lemma is:",
+        options: ["Every Banach space is reflexive", "The unit ball is compact only in finite dimensions", "Every linear map is bounded", "All norms are equivalent"],
+        answer: 1,
+        explanation: "Riesz Lemma $\\Rightarrow$ unit ball compact only in finite dimensions. This is a standard exam result."
+      },
+      // ── QUOTIENT SPACES ──
+      {
+        q: "The quotient norm on $X/Y$ is defined as:",
+        options: ["$\\|[x]\\| = \\sup_{y \\in Y} \\|x - y\\|$", "$\\|[x]\\| = \\inf_{y \\in Y} \\|x - y\\|$", "$\\|[x]\\| = \\|x\\| + \\|y\\|$", "$\\|[x]\\| = \\|x\\|$"],
+        answer: 1,
+        explanation: "Quotient norm = $\\inf_{y \\in Y} \\|x - y\\| = \\text{dist}(x, Y)$, the greatest lower bound of distances."
+      },
+      {
+        q: "If $X$ is a Banach space and $Y$ is a closed subspace, then $X/Y$ is:",
+        options: ["Always a Banach space", "Banach only if $Y$ is finite-dimensional", "Never Banach", "Banach only if $X$ is Hilbert"],
+        answer: 0,
+        explanation: "The quotient of a Banach space by any closed subspace is always a Banach space."
+      },
+      {
+        q: "The coset $[x]$ in the quotient space $X/Y$ equals:",
+        options: ["$\\{x\\}$", "$\\{x + y : y \\in Y\\}$", "$\\{y \\in Y\\}$", "$\\{\\alpha x : \\alpha \\in \\F\\}$"],
+        answer: 1,
+        explanation: "$[x] = x + Y = \\{x + y : y \\in Y\\}$. Two points are in the same coset iff their difference is in $Y$."
+      },
+      // ═══════════════════════════════════════════════════════════════
+      // LINEAR OPERATORS & BOUNDEDNESS
+      // ═══════════════════════════════════════════════════════════════
+      {
+        q: "A linear map $T: X \\to Y$ is bounded if:",
+        options: ["$\\|Tx\\| \\leq M\\|x\\|$ for all $x \\in X$ and some $M > 0$", "$T$ is continuous at one point only", "$T$ maps bounded sets to bounded sets (non-linear)", "$\\|T\\| = 0$"],
+        answer: 0,
+        explanation: "$T$ is bounded if $\\exists M > 0$ such that $\\|Tx\\| \\leq M\\|x\\|$ for all $x$. The smallest such $M$ is $\\|T\\|$."
+      },
+      {
+        q: "The operator norm $\\|T\\|$ can be computed as:",
+        options: ["$\\sup_{\\|x\\| < 1} \\|Tx\\|$ only", "$\\sup_{\\|x\\| \\leq 1} \\|Tx\\| = \\sup_{\\|x\\| = 1} \\|Tx\\| = \\sup_{x \\neq 0} \\frac{\\|Tx\\|}{\\|x\\|}$", "$\\inf_{\\|x\\| = 1} \\|Tx\\|$", "$\\sup_{x \\neq 0} \\|Tx\\| \\cdot \\|x\\|$"],
+        answer: 1,
+        explanation: "All three forms are equivalent. Since $Tx = \\|x\\| \\cdot T(x/\\|x\\|)$, we only need to check unit vectors."
+      },
+      {
+        q: "For a linear operator $T: X \\to Y$ between normed spaces, which are equivalent?",
+        options: ["$T$ continuous $\\Leftrightarrow$ $T$ bounded", "$T$ continuous $\\Leftrightarrow$ $T$ open", "$T$ bounded $\\Leftrightarrow$ $T$ invertible", "$T$ continuous only if $X$ is finite-dimensional"],
+        answer: 0,
+        explanation: "For LINEAR maps: continuous $\\iff$ bounded $\\iff$ continuous at 0 $\\iff$ continuous at any point. This is the fundamental equivalence."
+      },
+      {
+        q: "On a finite-dimensional normed space, every linear transformation is:",
+        options: ["Bounded", "Unbounded", "Bounded only if continuous", "Invertible"],
+        answer: 0,
+        explanation: "On finite-dimensional spaces, ALL linear maps are automatically bounded (and continuous). This is a crucial exam fact."
+      },
+      {
+        q: "An example of an UNBOUNDED linear operator is:",
+        options: ["Matrix multiplication on $\\R^n$", "Integration on $C[a,b]$", "Differentiation $D: C^1[0,1] \\to C[0,1]$ with sup norm", "The identity operator"],
+        answer: 2,
+        explanation: "Differentiation is unbounded: take $f_n(t) = \\sin(nt)$, then $\\|f_n\\|_\\infty = 1$ but $\\|Df_n\\|_\\infty = n \\to \\infty$."
+      },
+      {
+        q: "The space $\\mathcal{B}(X,Y)$ of bounded linear operators is:",
+        options: ["Always a Banach space", "A Banach space if $Y$ is Banach", "Never complete", "Complete only if $X$ is finite-dimensional"],
+        answer: 1,
+        explanation: "$\\mathcal{B}(X,Y)$ with operator norm is a normed space. If $Y$ is Banach, then $\\mathcal{B}(X,Y)$ is also Banach."
+      },
+      {
+        q: "If $Y = \\F$ (the scalar field), then $\\mathcal{B}(X,\\F)$ is called the:",
+        options: ["Quotient space", "Dual space $X^*$", "Product space", "Hilbert space"],
+        answer: 1,
+        explanation: "$X^* = \\mathcal{B}(X,\\F)$ is the dual space. It is always Banach, even if $X$ is not complete."
+      },
+      // ═══════════════════════════════════════════════════════════════
+      // DUAL SPACE & REFLEXIVITY
+      // ═══════════════════════════════════════════════════════════════
+      {
+        q: "The dual space $X^*$ consists of:",
+        options: ["All linear maps from $X$ to $\\F$", "All bounded linear functionals on $X$", "All continuous functions on $X$", "All bounded sequences in $X$"],
+        answer: 1,
+        explanation: "$X^* = \\{f: X \\to \\F : f \\text{ is bounded and linear}\\}$ with norm $\\|f\\| = \\sup_{\\|x\\| \\leq 1} |f(x)|$."
+      },
+      {
+        q: "In finite dimensions, the dual space $X^*$ is:",
+        options: ["Strictly larger than $X$", "Isomorphic to $X$ (self-dual)", "Not related to $X$", "Always $\\ell^2$"],
+        answer: 1,
+        explanation: "Finite-dimensional: $X^* \\cong X$ via the dot product. Every functional is $f(x) = \\langle a, x \\rangle$ for some fixed $a$."
+      },
+      {
+        q: "The dual of $\\ell^p$ for $1 < p < \\infty$ is:",
+        options: ["$\\ell^p$ itself", "$\\ell^1$", "$\\ell^q$ where $\\frac{1}{p} + \\frac{1}{q} = 1$", "$\\ell^\\infty$"],
+        answer: 2,
+        explanation: "By H\u00f6lder duality: $(\\ell^p)^* = \\ell^q$ with conjugate exponent $\\frac{1}{p} + \\frac{1}{q} = 1$."
+      },
+      {
+        q: "The dual of $\\ell^1$ is:",
+        options: ["$\\ell^1$", "$\\ell^2$", "$\\ell^\\infty$", "$c_0$"],
+        answer: 2,
+        explanation: "$(\\ell^1)^* = \\ell^\\infty$. The dual of $\\ell^\\infty$ is strictly larger than $\\ell^1$."
+      },
+      {
+        q: "The dual of $L^p[a,b]$ for $1 < p < \\infty$ is:",
+        options: ["$L^p[a,b]$", "$L^1[a,b]$", "$L^q[a,b]$ where $\\frac{1}{p} + \\frac{1}{q} = 1$", "$C[a,b]$"],
+        answer: 2,
+        explanation: "Riesz representation for $L^p$: every functional is integration against an $L^q$ function."
+      },
+      {
+        q: "The dual of $C[a,b]$ (with sup norm) is:",
+        options: ["$L^1[a,b]$", "$L^2[a,b]$", "BV functions (Riesz representation)", "$\\ell^\\infty$"],
+        answer: 2,
+        explanation: "Riesz Representation: functionals on $C[a,b]$ correspond to functions of bounded variation (BV)."
+      },
+      {
+        q: "A space $X$ is reflexive if the canonical embedding $X \\hookrightarrow X^{**}$ is:",
+        options: ["Injective", "Surjective", "Bounded", "Compact"],
+        answer: 1,
+        explanation: "$X$ is reflexive if $X \\cong X^{**}$ via the natural map $x \\mapsto F_x$ where $F_x(f) = f(x)$."
+      },
+      {
+        q: "Every reflexive space is automatically:",
+        options: ["Separable", "A Banach space", "Finite-dimensional", "Hilbert"],
+        answer: 1,
+        explanation: "Reflexive $\\Rightarrow$ Banach (since $X^{**}$ is always Banach, and $X \\cong X^{**}$)."
+      },
+      {
+        q: "Which of the following is reflexive?",
+        options: ["$\\ell^1$", "$\\ell^2$", "$\\ell^\\infty$", "$c_0$"],
+        answer: 1,
+        explanation: "$\\ell^2$ is reflexive (it's a Hilbert space). $\\ell^1$, $\\ell^\\infty$, $c_0$ are NOT reflexive."
+      },
+      {
+        q: "Which of the following is NOT reflexive?",
+        options: ["$L^2[0,1]$", "$\\ell^p$ for $1 < p < \\infty$", "$\\ell^1$", "$\\R^n$"],
+        answer: 2,
+        explanation: "$\\ell^1$ is NOT reflexive. $\\ell^p$ is reflexive only for $1 < p < \\infty$. All finite-dimensional and Hilbert spaces are reflexive."
+      },
+      {
+        q: "Every Hilbert space is:",
+        options: ["Reflexive", "Not reflexive in general", "Reflexive only if finite-dimensional", "Reflexive only if separable"],
+        answer: 0,
+        explanation: "Every Hilbert space is reflexive (Riesz Representation gives $H^* \\cong H$, hence $H^{**} \\cong H$)."
+      },
+      {
+        q: "The space $c_0$ (sequences converging to 0) is:",
+        options: ["Reflexive", "Not reflexive; $(c_0)^* = \\ell^1$, $(c_0)^{**} = \\ell^\\infty$", "A Hilbert space", "Not Banach"],
+        answer: 1,
+        explanation: "$c_0$ is NOT reflexive. Its dual is $\\ell^1$, and the bidual is $\\ell^\\infty$, which is strictly larger than $c_0$."
+      },
+      // ═══════════════════════════════════════════════════════════════
+      // HILBERT SPACES
+      // ═══════════════════════════════════════════════════════════════
+      {
+        q: "An inner product on a vector space $\\mathcal{H}$ over $\\F$ must satisfy all EXCEPT:",
+        options: ["$\\langle x, x \\rangle \\geq 0$ with equality iff $x = 0$", "$\\langle x, y \\rangle = \\overline{\\langle y, x \\rangle}$", "$\\langle \\alpha x + \\beta y, z \\rangle = \\alpha \\langle x, z \\rangle + \\beta \\langle y, z \\rangle$", "$\\langle x, y \\rangle = \\|x\\| \\cdot \\|y\\|$"],
+        answer: 3,
+        explanation: "Inner product satisfies positive definiteness, conjugate symmetry, and linearity in first argument. It does NOT equal $\\|x\\| \\cdot \\|y\\|$."
+      },
+      {
+        q: "Every inner product space becomes a normed space via:",
+        options: ["$\\|x\\| = \\langle x, x \\rangle$", "$\\|x\\| = \\sqrt{\\langle x, x \\rangle}$", "$\\|x\\| = |\\langle x, x \\rangle|$", "$\\|x\\| = \\langle x, x \\rangle^2$"],
+        answer: 1,
+        explanation: "The norm induced by an inner product is $\\|x\\| = \\sqrt{\\langle x, x \\rangle}$."
+      },
+      {
+        q: "A Hilbert space is:",
+        options: ["Any inner product space", "A complete inner product space", "Any normed space", "A finite-dimensional vector space"],
+        answer: 1,
+        explanation: "Hilbert space = complete inner product space (Banach space with inner product structure)."
+      },
+      {
+        q: "Which of the following is a Hilbert space?",
+        options: ["$\\ell^p$ for $p = 1$", "$\\ell^2$", "$\\ell^\\infty$", "$C[0,1]$ with sup norm"],
+        answer: 1,
+        explanation: "$\\ell^2$ is a Hilbert space with inner product $\\langle x, y \\rangle = \\sum x_n \\overline{y_n}$."
+      },
+      {
+        q: "$L^2[a,b]$ with $\\langle f, g \\rangle = \\int_a^b f(t)\\overline{g(t)}\\,dt$ is:",
+        options: ["Not a Hilbert space", "A Hilbert space", "Only a Banach space", "Not an inner product space"],
+        answer: 1,
+        explanation: "$L^2[a,b]$ is the canonical example of a Hilbert space (complete with the given inner product)."
+      },
+      {
+        q: "The Parallelogram Law states that in an inner product space:",
+        options: ["$\\|x+y\\|^2 + \\|x-y\\|^2 = 2(\\|x\\|^2 + \\|y\\|^2)$", "$\\|x+y\\|^2 = \\|x\\|^2 + \\|y\\|^2$", "$\\|x+y\\| \\leq \\|x\\| + \\|y\\|$", "$\\|x-y\\|^2 = \\|x\\|^2 - \\|y\\|^2$"],
+        answer: 0,
+        explanation: "Parallelogram Law: $\\|x+y\\|^2 + \\|x-y\\|^2 = 2(\\|x\\|^2 + \\|y\\|^2)$. This characterizes inner product spaces."
+      },
+      {
+        q: "The Parallelogram Law characterizes:",
+        options: ["All normed spaces", "All Banach spaces", "Inner product spaces among normed spaces", "Finite-dimensional spaces"],
+        answer: 2,
+        explanation: "If a norm satisfies the Parallelogram Law, it comes from some inner product. This distinguishes Hilbert spaces from general Banach spaces."
+      },
+      {
+        q: "In $\\ell^p$ with $p \\neq 2$, the Parallelogram Law:",
+        options: ["Always holds", "Holds only for special vectors", "Fails", "Holds only for $p = 1$"],
+        answer: 2,
+        explanation: "Parallelogram Law holds only in $\\ell^2$ (and $L^2$). For $p \\neq 2$, it fails, so $\\ell^p$ is not an inner product space."
+      },
+      {
+        q: "The Polarization Identity recovers the inner product from the norm. For real spaces:",
+        options: ["$\\langle x, y \\rangle = \\frac{1}{4}(\\|x+y\\|^2 - \\|x-y\\|^2)$", "$\\langle x, y \\rangle = \\|x+y\\|^2 - \\|x\\|^2 - \\|y\\|^2$", "$\\langle x, y \\rangle = \\frac{1}{2}(\\|x+y\\|^2 + \\|x-y\\|^2)$", "$\\langle x, y \\rangle = \\|x\\| \\cdot \\|y\\|$"],
+        answer: 0,
+        explanation: "Real Polarization: $\\langle x, y \\rangle = \\frac{1}{4}(\\|x+y\\|^2 - \\|x-y\\|^2)$. Complex version has 4 terms."
+      },
+      // ── ORTHOGONALITY ──
+      {
+        q: "Two vectors $x, y$ in a Hilbert space are orthogonal if:",
+        options: ["$\\|x + y\\|^2 = \\|x\\|^2 + \\|y\\|^2$", "$\\langle x, y \\rangle = 0$", "$x = -y$", "$\\|x\\| = \\|y\\|$"],
+        answer: 1,
+        explanation: "$x \\perp y$ means $\\langle x, y \\rangle = 0$. This implies $\\|x+y\\|^2 = \\|x\\|^2 + \\|y\\|^2$ (Pythagorean)."
+      },
+      {
+        q: "The orthogonal complement $M^\\perp$ of a subset $M \\subseteq \\mathcal{H}$ is:",
+        options: ["$\\{x \\in \\mathcal{H} : \\|x\\| = 0\\}$", "$\\{x \\in \\mathcal{H} : \\langle x, m \\rangle = 0 \\text{ for all } m \\in M\\}$", "$\\{x \\in M : \\|x\\| = 1\\}$", "$M$ itself"],
+        answer: 1,
+        explanation: "$M^\\perp = \\{x \\in \\mathcal{H} : \\langle x, m \\rangle = 0 \\text{ for all } m \\in M\\}$."
+      },
+      {
+        q: "$M^\\perp$ is always:",
+        options: ["Open", "Closed (a closed subspace)", "Dense in $\\mathcal{H}$", "Compact"],
+        answer: 1,
+        explanation: "$M^\\perp$ is always a closed linear subspace of $\\mathcal{H}$, regardless of whether $M$ is closed."
+      },
+      {
+        q: "If $M$ is a closed subspace of a Hilbert space $\\mathcal{H}$, then:",
+        options: ["$\\mathcal{H} = M \\oplus M^\\perp$", "$M \\cap M^\\perp = \\mathcal{H}$", "$M^\\perp = \\{0\\}$", "$M = M^{\\perp\\perp\\perp}$"],
+        answer: 0,
+        explanation: "Projection Theorem: $\\mathcal{H} = M \\oplus M^\\perp$ (direct sum). Every vector splits uniquely."
+      },
+      {
+        q: "For a closed subspace $M$, $M^{\\perp\\perp}$ equals:",
+        options: ["$\\{0\\}$", "$\\mathcal{H}$", "$M$", "$M^\\perp$"],
+        answer: 2,
+        explanation: "If $M$ is closed: $M^{\\perp\\perp} = M$. Also $\\{0\\}^\\perp = \\mathcal{H}$ and $\\mathcal{H}^\\perp = \\{0\\}$."
+      },
+      {
+        q: "Bessel's Inequality states that for an orthonormal sequence $\\{e_n\\}$:",
+        options: ["$\\sum |\\langle x, e_n \\rangle|^2 = \\|x\\|^2$", "$\\sum |\\langle x, e_n \\rangle|^2 \\leq \\|x\\|^2$", "$\\sum |\\langle x, e_n \\rangle| \\leq \\|x\\|$", "$\\sum \\langle x, e_n \\rangle = x$"],
+        answer: 1,
+        explanation: "Bessel: $\\sum |\\langle x, e_n \\rangle|^2 \\leq \\|x\\|^2$. Equality (Parseval) holds for complete orthonormal systems."
+      },
+      {
+        q: "Parseval's Identity states that for a complete orthonormal system $\\{e_n\\}$:",
+        options: ["$\\sum |\\langle x, e_n \\rangle|^2 \\leq \\|x\\|^2$", "$\\|x\\|^2 = \\sum |\\langle x, e_n \\rangle|^2$", "$x = \\sum \\langle x, e_n \\rangle$", "$\\langle x, y \\rangle = \\sum \\langle x, e_n \\rangle \\langle y, e_n \\rangle$"],
+        answer: 1,
+        explanation: "Parseval: $\\|x\\|^2 = \\sum |\\langle x, e_n \\rangle|^2$. Also $x = \\sum \\langle x, e_n \\rangle e_n$."
+      },
+      {
+        q: "The Projection Theorem states that for a closed subspace $M$ of Hilbert space $\\mathcal{H}$ and $x \\in \\mathcal{H}$:",
+        options: ["There exists unique $y \\in M$ such that $x - y \\perp M$", "$x \\in M$", "$M = \\mathcal{H}$", "$\\|x - y\\| = 0$"],
+        answer: 0,
+        explanation: "Projection Theorem: unique closest point $y \\in M$ with $x - y \\in M^\\perp$. The projection has norm 1."
+      },
+      {
+        q: "Riesz Representation Theorem states that for a Hilbert space $\\mathcal{H}$, every bounded linear functional $f$:",
+        options: ["Satisfies $f(x) = 0$ for all $x$", "Can be written as $f(x) = \\langle x, y \\rangle$ for a unique $y \\in \\mathcal{H}$", "Is of the form $f(x) = \\|x\\|$", "Is not bounded"],
+        answer: 1,
+        explanation: "Riesz: $f(x) = \\langle x, y \\rangle$ with $\\|f\\| = \\|y\\|$. This gives $\\mathcal{H}^* \\cong \\mathcal{H}$ (self-dual)."
+      },
+      // ── OPERATORS ON HILBERT SPACES ──
+      {
+        q: "The adjoint $T^*$ of an operator $T \\in \\mathcal{B}(\\mathcal{H})$ is defined by:",
+        options: ["$\\langle Tx, y \\rangle = \\langle x, T^* y \\rangle$", "$T^* = T^{-1}$", "$T^* T = I$", "$\\langle T^* x, y \\rangle = -\\langle x, Ty \\rangle$"],
+        answer: 0,
+        explanation: "$\\langle Tx, y \\rangle = \\langle x, T^* y \\rangle$ for all $x, y \\in \\mathcal{H}$. The adjoint always exists for bounded operators."
+      },
+      {
+        q: "An operator $T$ is self-adjoint (Hermitian) if:",
+        options: ["$T^* = 0$", "$T^* = T$", "$T^* = I$", "$T^* T = I$"],
+        answer: 1,
+        explanation: "Self-adjoint: $T^* = T$, i.e., $\\langle Tx, y \\rangle = \\langle x, Ty \\rangle$ for all $x, y$."
+      },
+      {
+        q: "An operator $T$ is unitary if:",
+        options: ["$T^* = T$", "$T^* T = T T^* = I$", "$T^* T = 0$", "$\\|T\\| = 1$"],
+        answer: 1,
+        explanation: "Unitary: $T^* T = T T^* = I$, i.e., $T^{-1} = T^*$. Preserves inner product and norms."
+      },
+      {
+        q: "An operator $T$ is normal if:",
+        options: ["$T^* = T$", "$T^* T = T T^*$", "$T^* = T^{-1}$", "$\\langle Tx, x \\rangle \\geq 0$"],
+        answer: 1,
+        explanation: "Normal: $T^* T = T T^*$. Every self-adjoint and every unitary operator is normal."
+      },
+      {
+        q: "The hierarchy of operators is:",
+        options: ["Self-adjoint $\\subset$ Normal, Unitary $\\subset$ Normal", "Normal $\\subset$ Self-adjoint", "Unitary $\\subset$ Self-adjoint", "Self-adjoint = Normal = Unitary"],
+        answer: 0,
+        explanation: "Self-adjoint $\\subset$ Normal and Unitary $\\subset$ Normal. Not conversely: there exist normal operators that are neither self-adjoint nor unitary."
+      },
+      {
+        q: "A positive operator $T$ satisfies:",
+        options: ["$\\|Tx\\| \\geq 0$", "$\\langle Tx, x \\rangle \\geq 0$ for all $x$", "$T^* = T^{-1}$", "$\\|T\\| = 1$"],
+        answer: 1,
+        explanation: "Positive: $\\langle Tx, x \\rangle \\geq 0$ for all $x$. Every positive operator is self-adjoint."
+      },
+      {
+        q: "The spectrum of a self-adjoint operator is contained in:",
+        options: ["$\\C$", "The unit circle", "$\\R$ (real numbers)", "$[0, \\infty)$"],
+        answer: 2,
+        explanation: "Self-adjoint operators have real spectrum. This is a fundamental spectral theorem result."
+      },
+      {
+        q: "The spectrum of a unitary operator is contained in:",
+        options: ["$\\R$", "$[0, \\infty)$", "The unit circle $\\{z : |z| = 1\\}$", "$\\{0, 1\\}$"],
+        answer: 2,
+        explanation: "Unitary: spectrum lies on the unit circle. Self-adjoint: spectrum on real line. Positive: spectrum in $[0,\\infty)$."
+      },
+      {
+        q: "The spectrum of a projection $P$ ($P^2 = P$) is contained in:",
+        options: ["$[0, 1]$", "$\\{0, 1\\}$", "$\\R$", "The unit circle"],
+        answer: 1,
+        explanation: "For $P^2 = P$, the only possible eigenvalues are 0 and 1. Hence $\\sigma(P) \\subseteq \\{0, 1\\}$."
+      },
+      {
+        q: "The spectrum of any bounded linear operator is always:",
+        options: ["Empty", "Non-empty and compact", "Open", "Unbounded"],
+        answer: 1,
+        explanation: "Standard result: $\\sigma(T)$ is always a non-empty compact subset of $\\C$."
+      },
+      {
+        q: "A projection operator $P$ on a Hilbert space satisfies:",
+        options: ["$P^2 = 0$", "$P^2 = P$ (idempotent)", "$P^2 = I$", "$P^2 = 2P$"],
+        answer: 1,
+        explanation: "Projection: $P^2 = P$ (idempotent). On Hilbert spaces, projections are also self-adjoint ($P^* = P$)."
+      },
+      {
+        q: "For a projection $P \\neq 0$, $\\|P\\|$ equals:",
+        options: ["$0$", "$1$", "$\\infty$", "Depends on $P$"],
+        answer: 1,
+        explanation: "For a non-zero projection: $\\|P\\| \\geq 1$. For orthogonal projections on Hilbert spaces: $\\|P\\| = 1$."
+      },
+      // ═══════════════════════════════════════════════════════════════
+      // HAHN-BANACH THEOREM
+      // ═══════════════════════════════════════════════════════════════
+      {
+        q: "The Hahn-Banach Theorem states that if $f$ is a bounded linear functional on a subspace $M$ of NLS $X$, then:",
+        options: ["$f$ cannot be extended to $X$", "$f$ can be extended to $F$ on $X$ with $\\|F\\| = \\|f\\|$", "$f$ can be extended but $\\|F\\| > \\|f\\|$", "$f$ is not bounded on $M$"],
+        answer: 1,
+        explanation: "Hahn-Banach: extend $f: M \\to \\F$ to $F: X \\to \\F$ preserving both linearity AND norm ($\\|F\\| = \\|f\\|$)."
+      },
+      {
+        q: "A corollary of Hahn-Banach: if $x_0 \\neq 0$ in $X$, then there exists $f \\in X^*$ such that:",
+        options: ["$f(x_0) = 0$", "$f(x_0) = \\|x_0\\|$ and $\\|f\\| = 1$", "$f(x_0) = -\\|x_0\\|$", "$\\|f\\| = \\|x_0\\|$"],
+        answer: 1,
+        explanation: "Hahn-Banach corollary: For any $x_0 \\neq 0$, $\\exists f \\in X^*$ with $f(x_0) = \\|x_0\\|$ and $\\|f\\| = 1$."
+      },
+      // ═══════════════════════════════════════════════════════════════
+      // BIG THEOREMS
+      // ═══════════════════════════════════════════════════════════════
+      {
+        q: "Baire Category Theorem states that a complete metric space:",
+        options: ["Is countable", "Cannot be written as a countable union of nowhere dense sets", "Has no dense subsets", "Is finite"],
+        answer: 1,
+        explanation: "Baire: a complete metric space is not a countable union of nowhere dense sets. Equivalently: intersection of countably many dense open sets is dense."
+      },
+      {
+        q: "The Uniform Boundedness Principle (Banach-Steinhaus) states: if $\\{T_n\\}$ is pointwise bounded on a Banach space $X$, then:",
+        options: ["Each $T_n$ is bounded individually", "$\\sup_n \\|T_n\\| < \\infty$ (uniformly bounded)", "$\\{T_n\\}$ converges strongly", "$X$ is finite-dimensional"],
+        answer: 1,
+        explanation: "Pointwise bounded ($\\sup_n \\|T_n x\\| < \\infty$ for each $x$) $\\Rightarrow$ uniformly bounded ($\\sup_n \\|T_n\\| < \\infty$). Requires $X$ Banach."
+      },
+      {
+        q: "In the Uniform Boundedness Principle, the condition that $X$ is Banach is:",
+        options: ["Not necessary", "Essential (the theorem fails without completeness)", "Only needed if $Y$ is infinite-dimensional", "Automatically satisfied"],
+        answer: 1,
+        explanation: "Completeness of $X$ is essential. Baire Category Theorem (which requires completeness) is the key tool in the proof."
+      },
+      {
+        q: "The Open Mapping Theorem states: if $T: X \\to Y$ is a surjective bounded linear operator between Banach spaces, then:",
+        options: ["$T$ is compact", "$T$ is an open map", "$T$ is injective", "$T^{-1}$ exists and is bounded"],
+        answer: 1,
+        explanation: "Open Mapping Theorem (Banach-Schauder): surjective bounded linear $T$ maps open sets to open sets."
+      },
+      {
+        q: "The Bounded Inverse Theorem states: if $T: X \\to Y$ is a bijective bounded linear operator between Banach spaces, then:",
+        options: ["$T^{-1}$ does not exist", "$T^{-1}$ is also bounded", "$T$ is compact", "$\\|T\\| = 1$"],
+        answer: 1,
+        explanation: "Bounded Inverse: bijective bounded linear $T$ between Banach spaces $\\Rightarrow$ $T^{-1}$ is bounded. $T$ is a homeomorphism."
+      },
+      {
+        q: "The Closed Graph Theorem states: for $T: X \\to Y$ linear between Banach spaces, $T$ is bounded if and only if:",
+        options: ["$T$ is injective", "Graph$(T) = \\{(x, Tx)\\}$ is closed in $X \\times Y$", "$T$ is surjective", "$\\|T\\| < 1$"],
+        answer: 1,
+        explanation: "Closed Graph Theorem: $T$ bounded $\\iff$ Graph$(T)$ is closed. If $x_n \\to x$ and $Tx_n \\to y$, then $y = Tx$."
+      },
+      {
+        q: "The Closed Graph Theorem is practically useful because:",
+        options: ["It proves all linear maps are bounded", "Verifying the graph is closed is often easier than finding $\\|T\\|$ directly", "It shows all Banach spaces are Hilbert", "It proves Hahn-Banach"],
+        answer: 1,
+        explanation: "To prove $T$ bounded, check: if $x_n \\to x$ and $Tx_n \\to y$, then $y = Tx$. Often easier than computing $\\|T\\|$."
+      },
+      {
+        q: "Which of the following requires both $X$ and $Y$ to be Banach?",
+        options: ["Hahn-Banach Theorem", "Baire Category Theorem", "Open Mapping Theorem and Closed Graph Theorem", "Riesz Representation Theorem"],
+        answer: 2,
+        explanation: "Open Mapping and Closed Graph require BOTH $X$ and $Y$ Banach. Hahn-Banach only needs $X$ normed. Baire needs a complete metric space."
+      },
+      // ═══════════════════════════════════════════════════════════════
+      // CONVERGENCE
+      // ═══════════════════════════════════════════════════════════════
+      {
+        q: "Strong convergence $x_n \\to x$ means:",
+        options: ["$\\|x_n - x\\| \\to 0$", "$f(x_n) \\to f(x)$ for all $f \\in X^*$", "$\\|x_n\\| \\to \\|x\\|$", "$x_n = x$ for all large $n$"],
+        answer: 0,
+        explanation: "Strong: $\\|x_n - x\\| \\to 0$ (norm convergence)."
+      },
+      {
+        q: "Weak convergence $x_n \\rightharpoonup x$ means:",
+        options: ["$\\|x_n - x\\| \\to 0$", "$f(x_n) \\to f(x)$ for all bounded linear functionals $f$", "$x_n$ converges coordinate-wise only", "$\\|x_n\\| \\to 0$"],
+        answer: 1,
+        explanation: "Weak: $f(x_n) \\to f(x)$ for all $f \\in X^*$. Strong $\\Rightarrow$ Weak always, but not conversely in infinite dimensions."
+      },
+      {
+        q: "In a finite-dimensional normed space, weak convergence is:",
+        options: ["Weaker than strong", "Equivalent to strong convergence", "Stronger than strong", "Unrelated to strong"],
+        answer: 1,
+        explanation: "In finite dimensions: weak $\\iff$ strong. This is a very common MCQ trap!"
+      },
+      {
+        q: "In infinite-dimensional spaces:",
+        options: ["Weak convergence implies strong convergence", "Strong convergence implies weak convergence, but not conversely", "Weak and strong are equivalent", "Neither implies the other"],
+        answer: 1,
+        explanation: "Strong $\\Rightarrow$ Weak always. But weak $\\not\\Rightarrow$ strong in infinite dimensions. E.g., orthonormal basis $e_n \\rightharpoonup 0$ but $\\|e_n\\| = 1$."
+      },
+      {
+        q: "The Eberlein-\u0160mulian Theorem states that in reflexive spaces:",
+        options: ["Every sequence converges strongly", "Every bounded sequence has a weakly convergent subsequence", "Weak and strong convergence are equivalent", "The unit ball is compact"],
+        answer: 1,
+        explanation: "Eberlein-\u0160mulian: In reflexive spaces, every bounded sequence has a weakly convergent subsequence."
+      },
+      {
+        q: "If $x_n \\rightharpoonup x$ weakly and $\\|x_n\\| \\to \\|x\\|$, then:",
+        options: ["$x_n$ converges to $x$ strongly", "$x_n$ does not converge", "$x = 0$", "$\\|x_n - x\\| \\to \\infty$"],
+        answer: 0,
+        explanation: "Weak convergence + norm convergence $\\Rightarrow$ strong convergence. This is a standard result."
+      },
+      // ═══════════════════════════════════════════════════════════════
+      // ADDITIONAL MIXED
+      // ═══════════════════════════════════════════════════════════════
+      {
+        q: "Two norms $\\|\\cdot\\|_1$ and $\\|\\cdot\\|_2$ on $X$ are equivalent if:",
+        options: ["$\\|x\\|_1 = \\|x\\|_2$ for all $x$", "$\\exists a, b > 0$ such that $a\\|x\\|_1 \\leq \\|x\\|_2 \\leq b\\|x\\|_1$", "$\\|x\\|_1 \\leq \\|x\\|_2$", "They have the same unit ball"],
+        answer: 1,
+        explanation: "Equivalent norms: $a\\|x\\|_1 \\leq \\|x\\|_2 \\leq b\\|x\\|_1$. In finite dimensions, ALL norms are equivalent."
+      },
+      {
+        q: "In finite-dimensional normed spaces:",
+        options: ["Only some norms are equivalent", "All norms are equivalent", "No two norms are equivalent", "Equivalence depends on the basis"],
+        answer: 1,
+        explanation: "In $\\R^n$, all norms are equivalent (same topology, same convergence). This is FALSE in infinite dimensions."
+      },
+      {
+        q: "The Pythagorean theorem in a Hilbert space states that if $x \\perp y$, then:",
+        options: ["$\\|x + y\\|^2 = \\|x\\|^2 + \\|y\\|^2$", "$\\|x + y\\| = \\|x\\| + \\|y\\|$", "$\\|x\\| = \\|y\\|$", "$\\langle x, y \\rangle = \\|x\\| \\|y\\|$"],
+        answer: 0,
+        explanation: "If $x \\perp y$ ($\\langle x, y \\rangle = 0$), then $\\|x+y\\|^2 = \\|x\\|^2 + \\|y\\|^2$. General case: $\\|x+y\\|^2 = \\|x\\|^2 + \\|y\\|^2 + 2\\text{Re}\\langle x, y \\rangle$."
+      },
+      {
+        q: "For a bounded operator $T$, $\\|T^* T\\|$ equals:",
+        options: ["$\\|T\\|$", "$\\|T\\|^2$", "$\\|T^*\\|$", "$\\|T\\| \\cdot \\|T^*\\|$"],
+        answer: 1,
+        explanation: "$C^*$-identity: $\\|T^* T\\| = \\|T\\|^2$. Also $\\|T^*\\| = \\|T\\|$."
+      },
+      {
+        q: "A compact operator maps bounded sets to:",
+        options: ["Open sets", "Closed sets", "Precompact (totally bounded) sets", "Dense sets"],
+        answer: 2,
+        explanation: "Compact operator: the image of any bounded set has compact closure (precompact). Finite-rank operators are compact."
+      },
+      {
+        q: "The identity operator on a normed space $X$ is compact if and only if:",
+        options: ["$X$ is Banach", "$X$ is finite-dimensional", "$X$ is Hilbert", "$X$ is reflexive"],
+        answer: 1,
+        explanation: "Identity is compact $\\iff$ the closed unit ball is compact $\\iff$ $X$ is finite-dimensional."
+      },
+      {
+        q: "If $X$ is a Banach space and $M$ is a proper closed subspace, then $X/M$ is:",
+        options: ["Not defined", "A Banach space", "Not Banach", "Finite-dimensional"],
+        answer: 1,
+        explanation: "Quotient of Banach by closed subspace is always Banach."
+      },
+      {
+        q: "The kernel of a bounded linear functional $f \\in X^*$ is:",
+        options: ["Always open", "Always closed", "Always dense", "Never closed"],
+        answer: 1,
+        explanation: "$\\ker(f) = f^{-1}(\\{0\\})$ is the inverse image of a closed set under a continuous map, hence closed."
+      },
+      {
+        q: "For $T: X \\to Y$ bounded linear between normed spaces, the null space $N(T)$ is:",
+        options: ["Open", "Closed", "Neither", "Dense"],
+        answer: 1,
+        explanation: "$N(T) = T^{-1}(\\{0\\})$ is closed since $T$ is continuous and $\\{0\\}$ is closed."
+      }
+    ]
   }
+
 
 ];
 
