@@ -308,6 +308,624 @@ const TESTS = [
       ]
     
   },
+  {
+    id: "unit3-indian-mathematics-1",
+    title: "Unit 3: Indian Mathematics — Test 1",
+    topics: "Baudhayana · Aryabhata · Brahmagupta · Bhaskara II · Madhava · Ramanujan · Vedic Mathematics",
+    duration: 60,
+    questions: [
+      // ── BAUDHAYANA ────────────────────────────────────────────────────
+      {
+        q: "What was the primary motivation behind the mathematical principles outlined in Baudhayana's works?",
+        options: ["Abstract algebraic theory", "Practical and ritualistic Vedic altar construction", "Astronomical planetary calculations", "Architectural planning for civil structures"],
+        answer: 1,
+        explanation: "The key motivation was practical and ritualistic — for Vedic altar construction — rather than abstract theory."
+      },
+      {
+        q: "Which of the following values is closest to Baudhayana's approximation of the square root of 2?",
+        options: ["1.4142135", "1.4142156", "1.4142178", "1.4142190"],
+        answer: 1,
+        explanation: "Baudhayana's formula $1 + 1/3 + 1/(3 \\cdot 4) - 1/(3 \\cdot 4 \\cdot 34)$ gives $577/408 \\approx 1.414215686$."
+      },
+      {
+        q: "In the geometric transformation of a square into a circle by Baudhayana, which formula represents the radius $r$ in terms of the square's side $a$?",
+        options: ["$r = a + \\dfrac{1}{3}(a\\sqrt{2} - a)$", "$r = a + \\dfrac{1}{4}(a\\sqrt{2} - a)$", "$r = a\\sqrt{2} - \\dfrac{1}{3}a$", "$r = \\dfrac{a}{3}(\\sqrt{2} - 1)$"],
+        answer: 0,
+        explanation: "To make a square into a circle, Baudhayana drew half its diagonal and used a third of the excess portion, giving $r = a + \\frac{1}{3}(a\\sqrt{2} - a)$."
+      },
+      {
+        q: "Which of the following values of $\\pi$ was NOT practically used by Baudhayana for different ritual constructions?",
+        options: ["$676/225$", "$900/289$", "$1156/361$", "$9785/11136$"],
+        answer: 3,
+        explanation: "Baudhayana used $676/225$ (3.004), $900/289$ (3.114), and $1156/361$ (3.202). $9785/11136$ is used for circle-to-square conversion but not as one of the three standard approximations."
+      },
+      {
+        q: "How did Baudhayana efficiently generate integer solutions for Pythagorean triples when one side $x$ is divisible by 4?",
+        options: ["$z = (x - x/4) + y/2$", "$z = (x - x/8) + y/2$", "$z = (x/2) + (y - y/4)$", "$z = x + y/8$"],
+        answer: 1,
+        explanation: "Baudhayana used the special case formula $z = (x - x/8) + y/2$ to efficiently generate Pythagorean triples for altar construction."
+      },
+      {
+        q: "The 'Fish Method' in the Sulbasutra is a geometric technique used to construct:",
+        options: ["A circle of equal area to a square", "An isosceles trapezium", "The perpendicular bisector of a line", "A square of area equal to a given rectangle"],
+        answer: 2,
+        explanation: "The Fish Method uses intersecting arcs from both ends of a diameter to draw a perpendicular bisector, resembling the shape of a fish."
+      },
+      {
+        q: "Regarding algebraic content, which type of equations were solved geometrically in the Sulbasutras?",
+        options: ["Cubic equations", "Linear and quadratic equations", "Quartic equations", "Diophantine equations"],
+        answer: 1,
+        explanation: "The Sulbasutra contains geometric solutions to linear equations in one unknown and quadratic equations of the form $ax^2 = c$ and $ax^2 + bx = c$."
+      },
+      {
+        q: "In Baudhayana's method to transform a rectangle into a square, what geometric technique is utilized after dividing the rectangle?",
+        options: ["The Fish Method", "The Cord-Arc Method", "The Diagonal-Bisection Method", "The Epicycle Method"],
+        answer: 1,
+        explanation: "To transform a rectangle into a square, Baudhayana used the Cord-Arc Method to find the exact side length after transposing halves and completing the square."
+      },
+      {
+        q: "Which of the following best describes the Sulbasutra?",
+        options: ["An abstract mathematical treatise", "An astronomical manual", "A master craftsman's manual for altars", "A poetic compilation of algorithms"],
+        answer: 2,
+        explanation: "The Sulbasutra functions as a master craftsman's manual, where different altar shapes were designed to invoke specific divine blessings."
+      },
+      {
+        q: "The fraction $577/408$ corresponds to Baudhayana's calculation of:",
+        options: ["The value of Pi", "The square root of 2", "The diagonal of a $3 \\times 4$ rectangle", "The area of a circular altar"],
+        answer: 1,
+        explanation: "$577/408$ is the fractional representation of Baudhayana's highly accurate approximation of $\\sqrt{2}$."
+      },
+      // ── MADHAVA ───────────────────────────────────────────────────────
+      {
+        q: "Madhava of Sangamagrama is widely celebrated as the founder of which mathematical school?",
+        options: ["Ujjain School", "Kusumapura School", "Kerala School of Astronomy and Mathematics", "Mysore School of Mathematics"],
+        answer: 2,
+        explanation: "Madhava founded the Kerala School of Astronomy and Mathematics, flourishing between the 14th and 16th centuries."
+      },
+      {
+        q: "Madhava discovered infinite power series for trigonometric functions approximately how many years before they were rediscovered in Europe?",
+        options: ["50 years", "100 years", "250 years", "500 years"],
+        answer: 2,
+        explanation: "Madhava discovered infinite power series around 1400 CE, over 250 years before Newton, Leibniz, and Gregory in Europe."
+      },
+      {
+        q: "Which of the following is the Madhava-Leibniz Series for $\\pi$?",
+        options: ["$\\pi/4 = 1 - 1/3 + 1/5 - 1/7 \\cdots$", "$\\pi/2 = 1 - 1/2 + 1/3 - 1/4 \\cdots$", "$\\pi = 3 + 1/(3 \\cdot 4) - 1/(3 \\cdot 4 \\cdot 34)$", "$\\pi/6 = 1/1^2 + 1/2^2 + 1/3^2 \\cdots$"],
+        answer: 0,
+        explanation: "The series $\\pi/4 = 1 - 1/3 + 1/5 - 1/7 \\cdots$ is known as the Madhava-Leibniz series."
+      },
+      {
+        q: "Madhava's remarkable error analysis for his infinite series utilized rational correction terms. Which of the following is one of his correction terms $R_n$?",
+        options: ["$R_n = 1/(2n)$", "$R_n = 1/(4n)$", "$R_n = n/(2n^2 + 1)$", "$R_n = (n^2 - 1)/(4n^3)$"],
+        answer: 1,
+        explanation: "Madhava provided correction terms such as $R_n = 1/(4n)$, $R_n = n/(4n^2 + 1)$, and $R_n = (n^2 + 1)/(4n^3 + 5n)$."
+      },
+      {
+        q: "Madhava's correction terms for estimating errors in infinite series are now understood as the first three convergents of:",
+        options: ["A Taylor series", "A continued fraction", "A Fourier series", "A binomial expansion"],
+        answer: 1,
+        explanation: "These rational correction terms are now mathematically understood as the first three convergents of a continued fraction."
+      },
+      {
+        q: "What was the precision of Madhava's calculation of $\\pi$ using just 21 terms of his series?",
+        options: ["Accurate to 5 decimal places", "Accurate to 7 decimal places", "Accurate to 11 decimal places", "Accurate to 17 decimal places"],
+        answer: 2,
+        explanation: "Madhava obtained $\\pi$ correct to 11 decimal places (3.14159265359) using just 21 terms."
+      },
+      {
+        q: "Madhava's sine table was composed for 24 arcs at equal intervals of what degree measurement?",
+        options: ["$1.25°$", "$2.50°$", "$3.75°$", "$5.00°$"],
+        answer: 2,
+        explanation: "He created a highly accurate table of sines for 24 arcs at equal intervals of $3.75°$ (which is $90°/24$) in a quarter circle."
+      },
+      {
+        q: "Which 19th-century Western scholar first drew attention to Kerala mathematics, noting its priority over Newton?",
+        options: ["George Gheverghese Joseph", "C. M. Whish", "A. P. Jushkevich", "K. V. Sarma"],
+        answer: 1,
+        explanation: "C. M. Whish (1834) was the first Western scholar to draw attention to Kerala mathematics and its priority over Newton."
+      },
+      {
+        q: "Madhava's faster-converging series for $\\pi$ is obtained by substituting which value of $x$ into the arctangent series?",
+        options: ["$x = 1/2$", "$x = 1/\\sqrt{2}$", "$x = 1/3$", "$x = 1/\\sqrt{3}$"],
+        answer: 3,
+        explanation: "Madhava discovered a rapidly converging series for $\\pi$ by substituting $x = 1/\\sqrt{3}$ into the arctangent series."
+      },
+      {
+        q: "Which later text, potentially containing Madhava's work, gives the value of $\\pi$ to 17 decimal places?",
+        options: ["Aryabhatiya", "Siddhanta Shiromani", "Sadratnamala", "Brahmasphutasiddhanta"],
+        answer: 2,
+        explanation: "The text Sadratnamala gives $\\pi$ to 17 decimal places, which some scholars suggest may be Madhava's work."
+      },
+      // ── BHASKARA II ───────────────────────────────────────────────────
+      {
+        q: "Bhaskara II's magnum opus, Siddhanta Shiromani, is divided into four parts. Which part deals with spherical astronomy?",
+        options: ["Lilavati", "Bijaganita", "Grahaganita", "Goladhyaya"],
+        answer: 3,
+        explanation: "Goladhyaya translates to 'Sphere Chapter' and deals with spherical astronomy and cosmography."
+      },
+      {
+        q: "Bhaskara II's Chakravala method is a cyclic algorithm designed to solve which type of equation?",
+        options: ["Linear simultaneous equations", "Indeterminate quadratic equations (Pell's equation)", "Cubic equations", "Differential equations"],
+        answer: 1,
+        explanation: "The Chakravala method solves indeterminate quadratic equations of the form $px^2 + 1 = y^2$, known as Pell's equation."
+      },
+      {
+        q: "In Grahaganita, Bhaskara II demonstrated an early intuitive grasp of differential calculus by stating that at a planet's highest point, its instantaneous speed is:",
+        options: ["Maximum", "Zero", "Equal to its mean speed", "Negative"],
+        answer: 1,
+        explanation: "He stated that at its highest point a planet's instantaneous speed is zero, a concept related to maxima in calculus."
+      },
+      {
+        q: "Which of the following approximations provided by Bhaskara II recognizes the foundational concept that the derivative of sine is cosine?",
+        options: ["$(\\sin y' - \\sin y)/(y' - y) = \\cos y$", "$(\\cos y' - \\cos y)/(y' - y) = -\\sin y$", "$\\sin(a+b) = \\sin a \\cos b + \\cos a \\sin b$", "$\\sin y / y = 1$"],
+        answer: 0,
+        explanation: "He gave the approximation $(\\sin y' - \\sin y)/(y' - y) = \\cos y$ for $y'$ close to $y$, essentially recognizing the derivative of sine is cosine."
+      },
+      {
+        q: "For which specific value of $p$ in Pell's equation ($px^2 + 1 = y^2$) did Bhaskara II provide a celebrated solution that later eluded Pierre de Fermat?",
+        options: ["$p = 8$", "$p = 11$", "$p = 32$", "$p = 61$"],
+        answer: 3,
+        explanation: "The solution for $p = 61$ is particularly celebrated because the same equation later eluded Pierre de Fermat in the 17th century."
+      },
+      {
+        q: "Bhaskara II's text Bijaganita was groundbreaking because it was the first text to acknowledge that:",
+        options: ["Zero is a placeholder", "A positive number has two square roots (positive and negative)", "Pi is an irrational number", "The Earth is spherical"],
+        answer: 1,
+        explanation: "Bijaganita was the first text to explicitly acknowledge that a positive number has two square roots, one positive and one negative."
+      },
+      {
+        q: "What is the name of Bhaskara II's own commentary on his work Siddhanta Shiromani?",
+        options: ["Karanakutuhala", "Vivarana", "Vasanabhasya (Mitaksara)", "Khandakhadyaka"],
+        answer: 2,
+        explanation: "Vasanabhasya (also called Mitaksara) is Bhaskara II's own commentary on his Siddhanta Shiromani."
+      },
+      {
+        q: "Which chapter of Siddhanta Shiromani focuses on arithmetic, geometry, and mensuration?",
+        options: ["Lilavati", "Bijaganita", "Grahaganita", "Goladhyaya"],
+        answer: 0,
+        explanation: "Lilavati ('The Beautiful' or 'Playful') covers arithmetic, geometry, mensuration, and combinatorial problems."
+      },
+      {
+        q: "Bhaskara II calculated the sidereal year to be approximately:",
+        options: ["365.2422 days", "365.2588 days", "365.25636 days", "365.3000 days"],
+        answer: 1,
+        explanation: "He estimated the sidereal year at 365.2588 days, remarkably close to the modern value of 365.25636 days."
+      },
+      {
+        q: "Which of the following is NOT covered in Bhaskara II's Lilavati?",
+        options: ["Operations with zero", "Permutations and combinations", "Spherical astronomy", "Indeterminate equations (Kuttaka method)"],
+        answer: 2,
+        explanation: "Spherical astronomy is covered in the Goladhyaya section, not in Lilavati."
+      },
+      // ── SRIDHARACHARYA ────────────────────────────────────────────────
+      {
+        q: "Sridharacharya is credited with being one of the first mathematicians to separate:",
+        options: ["Trigonometry from geometry", "Algebra from arithmetic", "Astronomy from mathematics", "Calculus from algebra"],
+        answer: 1,
+        explanation: "Sridharacharya is credited with being one of the first to clearly separate algebra (Bijaganita) from arithmetic (Patiganita)."
+      },
+      {
+        q: "Sridharacharya's method for solving quadratic equations involves multiplying both sides of $ax^2 + bx = c$ by:",
+        options: ["$2a$", "$4a$", "$a^2$", "$b$"],
+        answer: 1,
+        explanation: "His method involves multiplying both sides by $4a$, which completes the square and derives the quadratic formula."
+      },
+      {
+        q: "Which of the following statements about zero was NOT explicitly formalized by Sridharacharya?",
+        options: ["Addition of zero leaves a number unchanged", "Multiplication by zero results in zero", "Subtraction of zero leaves a number unchanged", "Division by zero results in infinity"],
+        answer: 3,
+        explanation: "Like his predecessors, Sridharacharya did not define division by zero; it was not yet formalized in his time."
+      },
+      {
+        q: "What is the formula derived by Sridharacharya for finding the number of terms $n$ in an arithmetic progression when the first term, common difference, and sum are known?",
+        options: ["$n = (d - 2a \\pm \\sqrt{(2a-d)^2 + 8dS}) / 2d$", "$n = (2a - d \\pm \\sqrt{(2a-d)^2 - 4dS}) / 2d$", "$n = (S - a)/d + 1$", "$n = (2S)/(2a + (n-1)d)$"],
+        answer: 0,
+        explanation: "He derived $n = (d - 2a \\pm \\sqrt{(2a-d)^2 + 8dS}) / 2d$ using his quadratic equation method."
+      },
+      {
+        q: "In Sridharacharya's Patiganita, what is the term used for the number $10^{17}$?",
+        options: ["Koti", "Arbuda", "Parardha", "Mahapadma"],
+        answer: 2,
+        explanation: "In Patiganita, the number $10^{17}$ is known as Parardha."
+      },
+      {
+        q: "Though Sridharacharya's original work Bijaganita is lost, his rule for quadratic equations was preserved by which later mathematician?",
+        options: ["Madhava", "Brahmagupta", "Bhaskara II", "Aryabhata"],
+        answer: 2,
+        explanation: "His rule was preserved by Bhaskara II in his own work, Bijaganita."
+      },
+      {
+        q: "Which of the following is Sridharacharya's formula for the sum of cubes of Arithmetic Progression terms?",
+        options: ["$\\Sigma T^3 = S^2$", "$\\Sigma T^3 = S[Sd + a(a-d)]$", "$\\Sigma T^3 = S[Sd - a(a+d)]$", "$\\Sigma T^3 = S[2a + (n-1)d]^2$"],
+        answer: 1,
+        explanation: "His formula for the sum of cubes of AP terms is $\\Sigma T^3 = S[Sd + a(a-d)]$, where $S$ is the standard sum."
+      },
+      {
+        q: "Historians primarily place Sridharacharya in which century based on his references to Brahmagupta and quotations by Govindasvamin?",
+        options: ["5th–6th century", "7th–8th century", "8th–9th century", "10th–11th century"],
+        answer: 2,
+        explanation: "He is firmly placed in the 8th–9th century because he referenced Brahmagupta (7th c.) and was quoted by Govindasvamin (9th c.)."
+      },
+      {
+        q: "Sridharacharya's formula for solving quadratic equations requires adding what quantity to both sides after multiplying by $4a$?",
+        options: ["$b$", "$b^2$", "$c^2$", "$2ab$"],
+        answer: 1,
+        explanation: "His method requires adding $b^2$ to both sides: $4a^2x^2 + 4abx + b^2 = 4ac + b^2$."
+      },
+      {
+        q: "Which of Sridharacharya's surviving works is a summary or shortened version of his larger mathematical treatises?",
+        options: ["Patiganita", "Trisatika", "Bijaganita", "Lilavati"],
+        answer: 1,
+        explanation: "Trisatika is noted as a summary work of Sridharacharya."
+      },
+      // ── ARYABHATA ─────────────────────────────────────────────────────
+      {
+        q: "In what year did Aryabhata compose the Aryabhatiya?",
+        options: ["476 CE", "499 CE", "550 CE", "628 CE"],
+        answer: 1,
+        explanation: "He composed it 3,600 years into the Kali Yuga when he was 23 years old, which corresponds to 499 CE."
+      },
+      {
+        q: "Aryabhata's value of $\\pi$ was derived from the rule: 'Add four to 100, multiply by eight, and then add 62,000.' What does this value approach for a circle with diameter 20,000?",
+        options: ["3.1415", "3.1416", "3.1428", "3.1400"],
+        answer: 1,
+        explanation: "The calculation $(104 \\times 8 + 62000)/20000 = 62832/20000 = 3.1416$."
+      },
+      {
+        q: "The term 'asanna' used by Aryabhata when giving the value of $\\pi$ implies what profound mathematical concept?",
+        options: ["Pi is a rational number", "Pi is exactly 3.1416", "Pi is incommensurable (irrational)", "Pi is a variable depending on circle size"],
+        answer: 2,
+        explanation: "The word 'asanna' (approximating/approaching) suggests he understood that $\\pi$ was incommensurable (irrational), centuries before Lambert proved it in 1761."
+      },
+      {
+        q: "What revolutionary astronomical claim did Aryabhata make that predated Copernicus by nearly 1,000 years?",
+        options: ["The universe is expanding", "The Earth rotates on its axis daily from west to east", "Planets move in perfect circles", "The Moon generates its own light"],
+        answer: 1,
+        explanation: "Aryabhata stated that the apparent motion of stars is caused by the Earth rotating on its axis daily from west to east."
+      },
+      {
+        q: "Aryabhata created the first known sine table with intervals of $3.75°$. What was his Sanskrit term for sine?",
+        options: ["Kojya", "Utkrama-jya", "Ardha-jya", "Jiba"],
+        answer: 2,
+        explanation: "He introduced the concept of sine and called it 'ardha-jya' (half-chord)."
+      },
+      {
+        q: "Which section of the Aryabhatiya deals specifically with mathematics, including arithmetic, algebra, geometry, and trigonometry?",
+        options: ["Gitikapada", "Ganitapada", "Kalakriyapada", "Golapada"],
+        answer: 1,
+        explanation: "The Ganitapada is the chapter dedicated to mathematics."
+      },
+      {
+        q: "Aryabhata devised the Kuttaka method to solve which type of mathematical problems?",
+        options: ["Summation of infinite series", "Indeterminate equations of the form $by = ax \\pm c$", "Finding the roots of cubic equations", "Calculating planetary epicycles"],
+        answer: 1,
+        explanation: "The Kuttaka ('pulverizer') method uses the Euclidean algorithm to solve indeterminate (Diophantine) equations of the form $by = ax \\pm c$."
+      },
+      {
+        q: "Which astronomical phenomenon did Aryabhata correctly explain as the Moon entering the Earth's shadow?",
+        options: ["Solar eclipse", "Lunar eclipse", "Retrograde motion of Mars", "Equinox precession"],
+        answer: 1,
+        explanation: "He gave a scientific explanation for lunar eclipses, stating they are caused by the Moon entering the Earth's shadow, rejecting mythological explanations."
+      },
+      {
+        q: "According to Aryabhata, what is the formula for the sum of cubes of the first $n$ natural numbers?",
+        options: ["$n(n+1)(2n+1)/6$", "$(n(n+1)/2)^2$", "$n^2(n+1)/2$", "$n(n+1)/2$"],
+        answer: 1,
+        explanation: "He gave the formula $1^3 + 2^3 + \\cdots + n^3 = (1 + 2 + \\cdots + n)^2 = (n(n+1)/2)^2$."
+      },
+      {
+        q: "While Aryabhata used a decimal place-value system implicitly, who is credited with formally defining zero as a number and establishing rules for it?",
+        options: ["Baudhayana", "Brahmagupta", "Bhaskara II", "Varahamihira"],
+        answer: 1,
+        explanation: "While Aryabhata laid the conceptual groundwork for zero as a placeholder, Brahmagupta formally defined zero as a number and established rules for it."
+      },
+      // ── BRAHMAGUPTA ───────────────────────────────────────────────────
+      {
+        q: "At what age did Brahmagupta compose his masterpiece, the Brahmasphutasiddhanta?",
+        options: ["23", "30", "36", "45"],
+        answer: 1,
+        explanation: "Brahmagupta composed the Brahmasphutasiddhanta in 628 CE at the age of 30."
+      },
+      {
+        q: "Which mathematical concept did Brahmagupta describe using the terms 'fortunes' and 'debts'?",
+        options: ["Fractions and integers", "Positive and negative numbers", "Rational and irrational numbers", "Real and imaginary numbers"],
+        answer: 1,
+        explanation: "He described positive numbers as 'fortunes' and negative numbers as 'debts' to establish arithmetic rules for them."
+      },
+      {
+        q: "According to Brahmagupta's rules for zero, how did he treat a fraction with zero as the denominator ($a/0$)?",
+        options: ["He treated it as zero", "He treated it as infinity or undefined", "He treated it as $a$", "He stated it equals 1"],
+        answer: 1,
+        explanation: "He treated a fraction with zero as the denominator as incorrect/undefined/infinity."
+      },
+      {
+        q: "Brahmagupta generalized Heron's formula to find the area of which geometric figure?",
+        options: ["An equilateral triangle", "A cyclic quadrilateral", "A regular hexagon", "An ellipse"],
+        answer: 1,
+        explanation: "Brahmagupta's formula calculates the area of a cyclic quadrilateral: Area $= \\sqrt{(s-a)(s-b)(s-c)(s-d)}$."
+      },
+      {
+        q: "Which famous mathematical identity named after Brahmagupta shows the product of two sums of two squares is itself a sum of two squares?",
+        options: ["$(a^2+b^2)(c^2+d^2) = (ac-bd)^2 + (ad+bc)^2$", "$(a+b)^2 = a^2 + 2ab + b^2$", "$a^2 - b^2 = (a-b)(a+b)$", "$x^2 + y^2 = z^2$"],
+        answer: 0,
+        explanation: "The Brahmagupta-Fibonacci identity is $(a^2+b^2)(c^2+d^2) = (ac-bd)^2 + (ad+bc)^2$."
+      },
+      {
+        q: "What astronomical manual did Brahmagupta write that contained revised planetary calculations?",
+        options: ["Brahmasphutasiddhanta", "Khandakhadyaka", "Siddhanta Shiromani", "Panca-siddhantika"],
+        answer: 1,
+        explanation: "The Khandakhadyaka is his practical astronomical manual with revised planetary calculations."
+      },
+      {
+        q: "In solving Pell's equation $61x^2 + 1 = y^2$, Brahmagupta found a solution long before European mathematicians. Which European mathematician famously struggled with this exact equation?",
+        options: ["Isaac Newton", "Gottfried Leibniz", "Pierre de Fermat", "Leonhard Euler"],
+        answer: 2,
+        explanation: "The solution for $61x^2 + 1 = y^2$ is remarkable because the same equation later baffled Pierre de Fermat in the 17th century."
+      },
+      {
+        q: "Which of the following physical concepts did Brahmagupta describe, noting that objects fall toward the Earth?",
+        options: ["Magnetism", "Gravity", "Inertia", "Centrifugal force"],
+        answer: 1,
+        explanation: "He described a force akin to gravity, arguing that it is in the nature of the Earth to attract objects."
+      },
+      {
+        q: "Brahmagupta's rules state that the product of a 'debt' and a 'debt' results in:",
+        options: ["A debt", "A fortune", "Zero", "Infinity"],
+        answer: 1,
+        explanation: "According to his rules for negative numbers, $(-a) \\times (-b) = +ab$, meaning a debt times a debt is a fortune."
+      },
+      {
+        q: "Brahmagupta belonged to which prominent school of mathematics and astronomy?",
+        options: ["Kerala School", "Mysore School", "Ujjain School", "Kusumapura School"],
+        answer: 2,
+        explanation: "He was the most celebrated mathematician of the Ujjain school, which had previously been home to Varahamihira."
+      },
+      // ── VARAHAMIHIRA ──────────────────────────────────────────────────
+      {
+        q: "Varahamihira was considered one of the 'Nine Jewels' (Navaratnas) in the court of which king?",
+        options: ["Chandragupta Maurya", "Ashoka", "Yashodharman Vikramaditya", "Harsha"],
+        answer: 2,
+        explanation: "Tradition states he was one of the Nine Jewels at the court of King Yashodharman Vikramaditya of Malwa."
+      },
+      {
+        q: "Which text by Varahamihira is a vital compendium that preserves knowledge from five earlier astronomical systems, four of which are now lost?",
+        options: ["Brhat-samhita", "Panca-siddhantika", "Aryabhatiya", "Khandakhadyaka"],
+        answer: 1,
+        explanation: "The Panca-siddhantika is a compendium preserving five earlier astronomical systems."
+      },
+      {
+        q: "Varahamihira's magnum opus, the Brhat-samhita, is best described as:",
+        options: ["A pure mathematics textbook", "A treatise solely on calculus", "An amazingly comprehensive encyclopedia spanning 106 chapters", "A poetic history of Indian kings"],
+        answer: 2,
+        explanation: "The Brhat-samhita is an extraordinarily comprehensive encyclopedia spanning 106 chapters covering almost every aspect of ancient Indian knowledge."
+      },
+      {
+        q: "Varahamihira is credited with creating the earliest known $4 \\times 4$ magic square in Indian mathematics. What is the magic sum of this square?",
+        options: ["15", "34", "65", "139"],
+        answer: 1,
+        explanation: "His $4 \\times 4$ magic square has each row, column, and diagonal summing to 34."
+      },
+      {
+        q: "In a remarkable early contribution to physics, how did Varahamihira explain the phenomenon of refraction?",
+        options: ["As waves of light bending due to frequency shifts", "As light slowing down in denser mediums", "As particles of light penetrating internal spaces of a medium like fluids seeping through porous materials", "As light being absorbed and re-emitted by atoms"],
+        answer: 2,
+        explanation: "He explained refraction as particles penetrating the internal spaces of a medium, analogous to fluids seeping through porous materials."
+      },
+      {
+        q: "Varahamihira used his $4 \\times 4$ magic square to calculate binomial coefficients, which relates to a concept later known as:",
+        options: ["Taylor Series", "Pascal's Triangle", "Fibonacci Sequence", "Gaussian Distribution"],
+        answer: 1,
+        explanation: "He used the magic square to calculate binomial coefficients, a concept related to Pascal's Triangle (discovered 1,000 years later in Europe)."
+      },
+      {
+        q: "Which famous 11th-century Persian scholar extensively quoted passages from Varahamihira's Brhat-samhita?",
+        options: ["Omar Khayyam", "Al-Khwarizmi", "Al-Biruni", "Ibn Sina"],
+        answer: 2,
+        explanation: "The 11th-century Persian scholar Al-Biruni extensively quoted passages from the Brhat-samhita."
+      },
+      {
+        q: "Varahamihira refined and enhanced the accuracy of whose previously established sine tables?",
+        options: ["Baudhayana's", "Brahmagupta's", "Aryabhata's", "Madhava's"],
+        answer: 2,
+        explanation: "He refined and enhanced the accuracy of Aryabhata's sine tables (jya)."
+      },
+      {
+        q: "Which unique ecological claim made by Varahamihira in the Brhat-samhita is increasingly supported by modern science?",
+        options: ["Trees communicate through fungal networks", "Termites and plants can detect underground water", "Birds navigate using the Earth's magnetic field", "Sunspots affect Earth's climate"],
+        answer: 1,
+        explanation: "He claimed in his water divination section that termites and plants can detect underground water."
+      },
+      {
+        q: "Varahamihira was the first to calculate the ayanamsa (precession of the equinoxes) at what value per year?",
+        options: ["25.10 arc seconds", "45.00 arc seconds", "50.32 arc seconds", "60.00 arc seconds"],
+        answer: 2,
+        explanation: "He was the first to calculate the ayanamsa at 50.32 arc seconds per year."
+      },
+      // ── RAMANUJAN ─────────────────────────────────────────────────────
+      {
+        q: "Ramanujan's revolutionary discovery of the formula $1 + 2 + 3 + 4 + \\cdots = -1/12$ is an example of:",
+        options: ["A convergent geometric series", "Ramanujan Summation to assign finite values to divergent series", "An error in his early notebooks", "A sequence that converges to zero"],
+        answer: 1,
+        explanation: "This is an example of Ramanujan Summation, assigning finite values to divergent series, highly relevant in string theory."
+      },
+      {
+        q: "Ramanujan worked extensively with G.H. Hardy on 'Mock Theta Functions'. These functions have become crucial in 21st-century physics, particularly in calculating:",
+        options: ["Quantum entanglement states", "Black hole entropy", "Fluid dynamics of plasma", "Neutrino oscillations"],
+        answer: 1,
+        explanation: "Mock theta functions became crucial in 21st-century physics, particularly in black hole entropy calculations."
+      },
+      {
+        q: "Ramanujan discovered extraordinary congruences for the partition function $p(n)$. Which of the following is one of his correct congruences?",
+        options: ["$p(5n+4) \\equiv 0 \\pmod{5}$", "$p(4n+3) \\equiv 0 \\pmod{4}$", "$p(10n+9) \\equiv 0 \\pmod{10}$", "$p(3n+2) \\equiv 0 \\pmod{3}$"],
+        answer: 0,
+        explanation: "He discovered the congruences $p(5n+4) \\equiv 0 \\pmod{5}$, $p(7n+5) \\equiv 0 \\pmod{7}$, and $p(11n+6) \\equiv 0 \\pmod{11}$."
+      },
+      {
+        q: "Which book, containing thousands of theorems without proofs, did Ramanujan obtain at age 15 and treat as his mathematical bible?",
+        options: ["Euclid's Elements", "Principia Mathematica", "G.S. Carr's 'Synopsis of Pure Mathematics'", "Euler's Introductio in analysin infinitorum"],
+        answer: 2,
+        explanation: "He obtained a copy of G.S. Carr's 'Synopsis of Pure Mathematics', which heavily influenced his intuitive, proof-less style."
+      },
+      {
+        q: "The Hardy-Ramanujan Taxicab number is 1729. What makes this number mathematically special?",
+        options: ["It is the largest prime number known in 1914", "It is the smallest number expressible as the sum of two cubes in two different ways", "It is the sum of the first 12 cubes", "It is the only number that is both a square and a cube"],
+        answer: 1,
+        explanation: "$1729 = 1^3 + 12^3 = 9^3 + 10^3$, making it the smallest number expressible as the sum of two cubes in two different ways."
+      },
+      {
+        q: "In Ramanujan's Super Magic Square encoding his birth date (22-12-18-87), what is the 'Magic Constant' (the sum of rows, columns, and diagonals)?",
+        options: ["139", "145", "1729", "100"],
+        answer: 0,
+        explanation: "The Magic Constant for Ramanujan's birthday magic square is 139."
+      },
+      {
+        q: "Ramanujan's 'Lost Notebook' was discovered in 1976 among papers at Trinity College by which mathematician?",
+        options: ["G.H. Hardy", "Bruce Berndt", "George Andrews", "Sander Zwegers"],
+        answer: 2,
+        explanation: "The Lost Notebook was discovered by mathematician George Andrews in 1976."
+      },
+      {
+        q: "Ramanujan often attributed his mathematical discoveries and intuition to which Hindu deity?",
+        options: ["Lord Shiva", "Goddess Saraswati", "Goddess Namagiri", "Lord Ganesha"],
+        answer: 2,
+        explanation: "He often attributed his discoveries to his family goddess, Namagiri, claiming she wrote equations on his tongue while he slept."
+      },
+      {
+        q: "Which of the following statements about Ramanujan's formula for calculating $\\pi$ is true?",
+        options: ["It relies on a simple geometric polygon approximation", "Each term adds roughly 8 digits of $\\pi$", "It converges slower than the Madhava series", "It calculates $\\pi$ only to 5 decimal places"],
+        answer: 1,
+        explanation: "His extraordinarily rapidly converging series for $\\pi$ adds roughly 8 digits per term and is used in modern computer calculations."
+      },
+      {
+        q: "A modern $5 \\times 5$ life-date magic square created as a tribute to Ramanujan has a magic sum of 145. What unique property does the number 145 possess?",
+        options: ["It is a factorion ($1! + 4! + 5!$)", "It is the sum of the first 10 primes", "It is a perfect number", "It is the smallest taxicab number"],
+        answer: 0,
+        explanation: "145 is a factorion because $145 = 1! + 4! + 5! = 1 + 24 + 120$."
+      },
+      // ── BHARATI KRISHNA TIRTHA ────────────────────────────────────────
+      {
+        q: "Swami Bharati Krishna Tirtha is widely recognized as the Father of:",
+        options: ["Indian Calculus", "Vedic Mathematics", "Modern Combinatorics", "Siddhanta Astronomy"],
+        answer: 1,
+        explanation: "He is celebrated as the Father of Vedic Mathematics, reconstructing it from 16 Sutras."
+      },
+      {
+        q: "Bharati Krishna Tirtha achieved an unprecedented academic record by passing M.A. examinations in how many subjects simultaneously?",
+        options: ["3", "5", "7", "9"],
+        answer: 2,
+        explanation: "At age 20, he passed M.A. examinations in seven subjects simultaneously, securing the highest honors in all."
+      },
+      {
+        q: "During his spiritual retreat at Sringeri, Bharati Krishna Tirtha claimed to have reconstructed Vedic Mathematics from how many foundational Sutras?",
+        options: ["8", "12", "16", "24"],
+        answer: 2,
+        explanation: "He claimed to have reconstructed the system from 16 Sutras (aphorisms)."
+      },
+      {
+        q: "What was the tragic fate of Bharati Krishna Tirtha's original 16-volume manuscript on Vedic Mathematics?",
+        options: ["It was burned in a fire at the ashram", "It was pledged to a money lender and eventually sold to a German scholar", "It was confiscated by the British government", "It was buried and lost during his travels"],
+        answer: 1,
+        explanation: "He had pledged the manuscripts as security to a money lender, and they were subsequently lost/sold to a German scholar."
+      },
+      {
+        q: "Bharati Krishna Tirtha made history in 1958 by becoming the first Shankaracharya to:",
+        options: ["Write a book in English", "Visit the West (United States)", "Solve Pell's equation mentally", "Address the United Nations"],
+        answer: 1,
+        explanation: "In February 1958, he made history as the first Shankaracharya ever to visit the West, sponsored by the Self-Realization Fellowship."
+      },
+      {
+        q: "In 1957, despite failing health and cataracts, Bharati Krishna Tirtha dictated an introductory text that was published posthumously in 1965 by which publisher?",
+        options: ["Oxford University Press", "Motilal Banarsidass", "Cambridge University Press", "Springer"],
+        answer: 1,
+        explanation: "The dictated manuscript was eventually published in 1965 by Motilal Banarsidass."
+      },
+      {
+        q: "Before turning entirely toward spiritual pursuits, Bharati Krishna Tirtha served as the first Principal of the National College located in which city?",
+        options: ["Varanasi", "Mysore", "Rajahmundry", "Pune"],
+        answer: 2,
+        explanation: "In 1908, he was appointed the first Principal of the National College at Rajahmundry."
+      },
+      {
+        q: "Which sub-Sutras (corollaries) are included in Bharati Krishna Tirtha's Vedic Mathematics system along with the 16 main Sutras?",
+        options: ["9 Sub-Sutras", "13 Sub-Sutras", "16 Sub-Sutras", "21 Sub-Sutras"],
+        answer: 1,
+        explanation: "The book presents 16 Sutras and 13 Sub-Sutras covering various branches of mathematics."
+      },
+      {
+        q: "In 1921, Bharati Krishna Tirtha was arrested in the 'Karachi case' for preaching in favor of a fatwa urging non-cooperation with:",
+        options: ["The French colonizers", "The British government", "The Portuguese in Goa", "The Dutch East India Company"],
+        answer: 1,
+        explanation: "He was arrested for preaching in favor of a fatwa urging Muslims not to cooperate with the British government."
+      },
+      {
+        q: "Which monastic title and office did Bharati Krishna Tirtha hold for 35 years until his death?",
+        options: ["Shankaracharya of Govardhan Math in Puri", "Head Priest of Kashi Vishwanath", "Abbot of Sringeri Math", "President of the Ramakrishna Mission"],
+        answer: 0,
+        explanation: "He was installed as the 143rd Shankaracharya of Govardhan Math in Puri, holding the office for 35 years."
+      },
+      // ── CROSS-TOPIC / COMPARATIVE ─────────────────────────────────────
+      {
+        q: "Who among the following mathematically formalized operations with zero, making it a number rather than just a placeholder?",
+        options: ["Aryabhata", "Brahmagupta", "Baudhayana", "Varahamihira"],
+        answer: 1,
+        explanation: "Brahmagupta was the first to treat zero as a number in its own right and established arithmetic rules for it."
+      },
+      {
+        q: "Which two mathematicians are specifically noted for discovering/solving forms of the indeterminate quadratic equation known as Pell's equation?",
+        options: ["Aryabhata and Madhava", "Baudhayana and Sridharacharya", "Brahmagupta and Bhaskara II", "Varahamihira and Ramanujan"],
+        answer: 2,
+        explanation: "Brahmagupta formulated early solutions, and Bhaskara II developed the Chakravala method to solve complex forms like $61x^2 + 1 = y^2$."
+      },
+      {
+        q: "Who introduced the 'Kuttaka' (pulverizer) method, and who later improved upon indeterminate equation solving?",
+        options: ["Introduced by Aryabhata, improved by Brahmagupta and Bhaskara II", "Introduced by Madhava, improved by Ramanujan", "Introduced by Baudhayana, improved by Sridharacharya", "Introduced by Varahamihira, improved by Aryabhata"],
+        answer: 0,
+        explanation: "Aryabhata devised the Kuttaka method, and later mathematicians like Brahmagupta and Bhaskara II expanded on Diophantine equations."
+      },
+      {
+        q: "The concept of 'instantaneous speed being zero at the highest point' was stated by Bhaskara II. This is fundamentally linked to which modern mathematical branch?",
+        options: ["Linear Algebra", "Topology", "Differential Calculus", "Number Theory"],
+        answer: 2,
+        explanation: "This observation (a derivative being zero at a maximum) shows an early intuitive grasp of differential calculus."
+      },
+      {
+        q: "Madhava's infinite series for $\\pi$ ($\\pi/4 = 1 - 1/3 + 1/5 - 1/7 \\cdots$) is named today in honor of Madhava and which European mathematician?",
+        options: ["Newton", "Leibniz", "Gregory", "Euler"],
+        answer: 1,
+        explanation: "It is known as the Madhava-Leibniz series."
+      },
+      {
+        q: "While Aryabhata correctly argued that the Earth rotates on its axis, which later astronomer explicitly stated the Earth is spherical and noted objects fall toward it?",
+        options: ["Brahmagupta", "Madhava", "Sridharacharya", "Bharati Krishna Tirtha"],
+        answer: 0,
+        explanation: "Brahmagupta argued the Earth is spherical and described a force akin to gravity."
+      },
+      {
+        q: "What was the primary difference between how Baudhayana used mathematics compared to Bhaskara II?",
+        options: ["Baudhayana used it for abstract theory, Bhaskara II for ritual altars", "Baudhayana used it for ritualistic altar construction, Bhaskara II for astronomy and pure algebra", "Baudhayana focused on calculus, Bhaskara II on geometry", "There was no difference"],
+        answer: 1,
+        explanation: "Baudhayana's math was practical for Vedic altars; Bhaskara II engaged in advanced algebra, astronomy, and differential concepts."
+      },
+      {
+        q: "Which mathematician's work bridges classical Indian mathematics with the advanced analytical methods of the Kerala School?",
+        options: ["Aryabhata", "Varahamihira", "Bhaskara II", "Sridharacharya"],
+        answer: 2,
+        explanation: "Bhaskara II stands as the culmination of classical Indian mathematics before the emergence of the Kerala School led by Madhava."
+      },
+      {
+        q: "The approximation of $\\pi$ was a recurring theme. Match the mathematician to their $\\pi$ concept: Aryabhata calculated $\\square$; Baudhayana used ritual values like $\\square$; Madhava used infinite series for $\\square$.",
+        options: ["Aryabhata: Infinite series; Baudhayana: 3.1416; Madhava: 3.004", "Aryabhata: 3.1416; Baudhayana: 3.004; Madhava: 11 decimal places", "Aryabhata: 11 decimal places; Baudhayana: 3.1416; Madhava: 3.004", "Aryabhata: 3.004; Baudhayana: 11 decimal places; Madhava: 3.1416"],
+        answer: 1,
+        explanation: "Aryabhata calculated 3.1416; Baudhayana used ritual values like $676/225 \\approx 3.004$; Madhava used infinite series for 11 decimal places."
+      },
+      {
+        q: "The 'Rule of Three, Five, Seven, Nine, Eleven' for advanced compound proportions is found in the work of:",
+        options: ["Aryabhata", "Brahmagupta", "Bhaskara II", "Ramanujan"],
+        answer: 2,
+        explanation: "These advanced compound proportion methods are listed under the achievements of Bhaskara II."
+      }
+    ]
+  },
   
   // ... existing tests ...
   {
