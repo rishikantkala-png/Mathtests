@@ -676,7 +676,7 @@ const TESTS = [
     id: "unit2-ode-pde-2",
     title: "Unit 2: ODE & PDE — Test 2",
     topics: "ODEs · Exact Equations · Clairaut · Orthogonal Trajectories · Operator Methods · PDEs · Charpit · Lagrange · Heat · Wave · Laplace",
-    duration: 75,
+    duration: 60,
     questions: [
       {
         q: "The solution of $\\dfrac{dy}{dx} = \\sin(x+y) + \\cos(x+y)$ is:",
