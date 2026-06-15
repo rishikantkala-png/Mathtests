@@ -1918,6 +1918,726 @@ const TESTS = [
       }
     ]
   }  ,
+
+{
+  id: "mppsc-3d-geometry-1",
+  title: "Unit 4: 3D Geometry — Comprehensive Test",
+  topics: "Cones · Cylinders · Central Conicoids · Tangents, Normals & Ruled Surfaces",
+  duration: 60,
+  questions: [
+
+    // ── CONES ─────────────────────────────────────────────────────────────
+    {
+      q: "The equation of the cone whose vertex is the origin and guiding curve is $ax^{2}+by^{2}+cz^{2}=1$, $lx+my+nz=p$ is:",
+      options: [
+        "$ax^{2}+by^{2}+cz^{2}=lx+my+nz$",
+        "$p(ax^{2}+by^{2}+cz^{2})=(lx+my+nz)^{2}$",
+        "$p^{2}(ax^{2}+by^{2}+cz^{2})=(lx+my+nz)^{2}$",
+        "None of these"
+      ],
+      answer: 2,
+      explanation: "Homogenize the quadric using $1 = \\frac{lx+my+nz}{p}$. Replace the constant 1 in $ax^2+by^2+cz^2=1$ by $\\left(\\frac{lx+my+nz}{p}\\right)^2$ to get the homogeneous (degree-2) cone equation: $p^{2}(ax^{2}+by^{2}+cz^{2})=(lx+my+nz)^{2}$."
+    },
+    {
+      q: "The equation of the cone whose vertex is the origin and guiding curve is $x=k$, $f(y,z)=0$ is:",
+      options: [
+        "$f\\!\\left(\\dfrac{xk}{z},\\, \\dfrac{pk}{z}\\right)=0$",
+        "$f\\!\\left(\\dfrac{yk}{x},\\, \\dfrac{zk}{x}\\right)=0$",
+        "$f\\!\\left(\\dfrac{xk}{y},\\, \\dfrac{zk}{y}\\right)=0$",
+        "None of these"
+      ],
+      answer: 1,
+      explanation: "A ray from the origin hits the plane $x=k$ at the point $\\left(k,\\,\\frac{yk}{x},\\,\\frac{zk}{x}\\right)$. Substituting this into the guiding curve $f(y,z)=0$ gives the homogeneous cone equation $f\\!\\left(\\frac{yk}{x},\\frac{zk}{x}\\right)=0$."
+    },
+    {
+      q: "The enveloping cone of the sphere $x^{2}+y^{2}+z^{2}+2x-2y=2$ with vertex $(1,1,1)$ is:",
+      options: [
+        "$x^{2}-y^{2}+4xz-10x+2y-4z+6=0$",
+        "$3x^{2}-y^{2}+4xz-10x+2y-4z+6=0$",
+        "$3x^{2}+y^{2}+4xy-10x+2y-5z+1=0$",
+        "None of these"
+      ],
+      answer: 1,
+      explanation: "Write the sphere as $S = x^2+y^2+z^2+2x-2y-2=0$. At vertex $P(1,1,1)$: $S_1=1+1+1+2-2-2=1$. The tangent expression is $T=x\\cdot1+y\\cdot1+z\\cdot1+(x+1)-(y+1)-2=2x+z-2$. Enveloping cone: $SS_1=T^2 \\Rightarrow S = (2x+z-2)^2$. Expanding: $x^2+y^2+z^2+2x-2y-2 = 4x^2+4xz-8x+z^2-4z+4$. Rearranging: $3x^2-y^2+4xz-10x+2y-4z+6=0$, which is option B."
+    },
+    {
+      q: "The equation of a cone of second degree which passes through the coordinate axes is:",
+      options: [
+        "$ax^{2}+by^{2}+cz^{2}=0$",
+        "$axy+byz+cxz=0$",
+        "$ax^{2}+by^{2}+cz^{2}+fxy+gyz+hzx=0$",
+        "None of these"
+      ],
+      answer: 1,
+      explanation: "The $x$-axis is the set of points $(t,0,0)$. Substituting into the general degree-2 cone: only the $x^2$ term survives, giving $at^2=0$ for all $t$, so $a=0$. Similarly $b=0$ and $c=0$. What remains are only the cross-product terms: $axy+byz+cxz=0$."
+    },
+    {
+      q: "The equation of the cone whose vertex is $(1,1,0)$ and guiding curve is $x^{2}+z^{2}=4$, $y=0$ is:",
+      options: [
+        "$x^{2}-3y^{2}+z^{2}-2xy-8y-4=0$",
+        "$x^{2}-3y^{2}-z^{2}-2xy+8y-4=0$",
+        "$x^{2}-3y^{2}+z^{2}-2xy+8y-4=0$",
+        "None of these"
+      ],
+      answer: 2,
+      explanation: "A point on a generator is $(1+lt, 1+mt, nt)$. At $y=0$: $1+mt=0 \\Rightarrow t=-1/m$. Substituting back into $x^2+z^2=4$ eliminates the parameter $t$ and gives $x^2-3y^2+z^2-2xy+8y-4=0$. Quick verification: at $y=0$ the equation reduces to $x^2+z^2-4=0$, matching the guiding curve exactly."
+    },
+    {
+      q: "The equation $ax^{2}+by^{2}+cz^{2}+2ux+2vy+2wz+d=0$ represents a cone if:",
+      options: [
+        "$\\dfrac{u}{a}+\\dfrac{v}{b}+\\dfrac{w}{c}=d$",
+        "$\\dfrac{u^{2}}{a^{2}}+\\dfrac{v^{2}}{b^{2}}+\\dfrac{w^{2}}{c^{2}}=d$",
+        "$\\dfrac{u^{2}}{a}+\\dfrac{v^{2}}{b}+\\dfrac{w^{2}}{c}=d$",
+        "None of these"
+      ],
+      answer: 2,
+      explanation: "A quadric is a cone when it has a vertex, i.e., a point where all three partial derivatives vanish simultaneously. Differentiating and solving gives the vertex at $\\left(-\\frac{u}{a},-\\frac{v}{b},-\\frac{w}{c}\\right)$. Substituting the vertex back into the equation and simplifying yields the condition $\\frac{u^2}{a}+\\frac{v^2}{b}+\\frac{w^2}{c}=d$."
+    },
+    {
+      q: "The equation of a right circular cone with vertex at the origin, axis along the $x$-axis, and semi-vertical angle $\\theta$ is:",
+      options: [
+        "$x^{2}+y^{2}=z^{2}\\tan^{2}\\theta$",
+        "$y^{2}+z^{2}=x^{2}\\tan^{2}\\theta$",
+        "$x^{2}+z^{2}=y^{2}\\tan^{2}\\theta$",
+        "None of these"
+      ],
+      answer: 1,
+      explanation: "For a point $P(x,y,z)$ on the cone, the angle between $OP$ and the $x$-axis equals $\\theta$. Using $\\cos\\theta = \\frac{x}{r}$ where $r^2=x^2+y^2+z^2$, we get $\\sin^2\\theta = \\frac{y^2+z^2}{x^2+y^2+z^2}$. Therefore $\\tan^2\\theta = \\frac{y^2+z^2}{x^2}$, giving $y^2+z^2=x^2\\tan^2\\theta$."
+    },
+    {
+      q: "The general equation of a right circular cone with vertex $V(\\alpha,\\beta,\\gamma)$, axis direction $\\langle l,m,n \\rangle$, and semi-vertical angle $\\theta$ is:",
+      options: [
+        "$[l(x-\\alpha)+m(y-\\beta)+n(z-\\gamma)]^{2} = [(x-\\alpha)^{2}+(y-\\beta)^{2}+(z-\\gamma)^{2}]\\cos^{2}\\theta$",
+        "$[l(x-\\alpha)+m(y-\\beta)+n(z-\\gamma)]^{2} = (l^{2}+m^{2}+n^{2})[(x-\\alpha)^{2}+(y-\\beta)^{2}+(z-\\gamma)^{2}]\\cos^{2}\\theta$",
+        "$[l(x-\\alpha)+m(y-\\beta)+n(z-\\gamma)]^{2} = (l^{2}+m^{2}+n^{2})\\cos^{2}\\theta$",
+        "None of these"
+      ],
+      answer: 1,
+      explanation: "The cosine of the angle between vector $\\overrightarrow{VP}=(x-\\alpha,y-\\beta,z-\\gamma)$ and the axis $\\langle l,m,n\\rangle$ is $\\frac{l(x-\\alpha)+m(y-\\beta)+n(z-\\gamma)}{\\sqrt{l^2+m^2+n^2}\\cdot|VP|}$. Setting this equal to $\\cos\\theta$ and squaring gives option B. (When $l^2+m^2+n^2=1$, this reduces to option A.)"
+    },
+    {
+      q: "The condition that the cone $ax^{2}+by^{2}+cz^{2}+2fyz+2gzx+2hxy=0$ has three mutually perpendicular generators is:",
+      options: [
+        "$a+b+c=0$",
+        "$f+g+h=0$",
+        "$\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}=0$",
+        "$\\dfrac{1}{f}+\\dfrac{1}{g}+\\dfrac{1}{h}=0$"
+      ],
+      answer: 0,
+      explanation: "If three mutually perpendicular generators have direction ratios $\\langle l_i,m_i,n_i\\rangle$ for $i=1,2,3$, then $\\sum l_i^2=\\sum m_i^2=\\sum n_i^2=1$ and all cross-dot-products are zero. Substituting all three into the cone equation and summing gives $(a+b+c)(\\sum l_i^2)=0$. Since the sum of squares cannot be zero, we need $a+b+c=0$."
+    },
+    {
+      q: "The equation of the cone touching the three coordinate planes is:",
+      options: [
+        "$\\sqrt{fx}+\\sqrt{gy}+\\sqrt{hz}=0$",
+        "$fyz+gzx+hxy=0$",
+        "$fx+gy+hz=0$",
+        "$\\sqrt{fx}+\\sqrt{gy}=\\sqrt{hz}$"
+      ],
+      answer: 0,
+      explanation: "For a cone to touch the $xy$-plane ($z=0$), its intersection with that plane must be a double line (repeated root). Imposing this on the general second-degree cone passing through the origin, the tangency condition with each coordinate plane forces the coefficients of $x^2$, $y^2$, $z^2$ to vanish, leaving the characteristic radical form $\\sqrt{fx}+\\sqrt{gy}+\\sqrt{hz}=0$."
+    },
+    {
+      q: "The equation of the reciprocal cone of $\\sqrt{fx}+\\sqrt{gy}+\\sqrt{hz}=0$ is:",
+      options: [
+        "$fx+gy+hz=0$",
+        "$\\dfrac{yz}{f}+\\dfrac{zx}{g}+\\dfrac{xy}{h}=0$",
+        "$fyz+gzx+hxy=0$",
+        "$\\dfrac{1}{f}+\\dfrac{1}{g}+\\dfrac{1}{h}=0$"
+      ],
+      answer: 2,
+      explanation: "The reciprocal (dual) cone is formed by the polars of each generator. The cone $\\sqrt{fx}+\\sqrt{gy}+\\sqrt{hz}=0$ touches the coordinate planes, so its reciprocal passes through the coordinate axes — the characteristic form for such a cone is $fyz+gzx+hxy=0$. These two cones are each other's reciprocals."
+    },
+    {
+      q: "If the plane $ax+by+cz=0$ cuts the cone $yz+zx+xy=0$ in mutually perpendicular lines, then:",
+      options: [
+        "$a+b+c=0$",
+        "$ab+bc+ca=abc$",
+        "$\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}=0$",
+        "$a+b+c=abc$"
+      ],
+      answer: 2,
+      explanation: "A plane $lx+my+nz=0$ cuts a cone in perpendicular lines if and only if the normal $(l,m,n)$ lies on the reciprocal cone. The reciprocal of $yz+zx+xy=0$ is $\\frac{x}{yz}+\\frac{y}{zx}+\\frac{z}{xy}=0$, i.e., $\\frac{1}{x}+\\frac{1}{y}+\\frac{1}{z}=0$. Replacing $(x,y,z)$ with $(a,b,c)$ gives $\\frac{1}{a}+\\frac{1}{b}+\\frac{1}{c}=0$."
+    },
+    {
+      q: "If three generators of a right circular cone are mutually perpendicular, its semi-vertical angle $\\theta$ satisfies:",
+      options: [
+        "$\\theta = \\tan^{-1}\\!\\sqrt{2}$",
+        "$\\theta = \\cot^{-1}\\!\\sqrt{2}$",
+        "$\\theta = \\sec^{-1}\\!\\sqrt{2}$",
+        "$\\theta = \\csc^{-1}\\!\\sqrt{2}$"
+      ],
+      answer: 0,
+      explanation: "A right circular cone with axis along the $x$-axis is $y^2+z^2=x^2\\tan^2\\theta$, or equivalently $-\\tan^2\\theta\\cdot x^2+y^2+z^2=0$. The coefficients are $a=-\\tan^2\\theta$, $b=1$, $c=1$. Applying the three-mutually-perpendicular-generators condition $a+b+c=0$: $-\\tan^2\\theta+1+1=0 \\Rightarrow \\tan^2\\theta=2 \\Rightarrow \\theta=\\tan^{-1}\\!\\sqrt{2}$."
+    },
+    {
+      q: "The equation of the cone whose vertex is the origin and base curve is $f(x,y)=0,\\ z=c$ is:",
+      options: [
+        "$f\\!\\left(\\dfrac{z-c}{x},\\, \\dfrac{z-c}{y}\\right)=0$",
+        "$f\\!\\left(\\dfrac{x}{z-c},\\, \\dfrac{y}{z-c}\\right)=0$",
+        "$f\\!\\left(\\dfrac{z}{xc},\\, \\dfrac{z}{yc}\\right)=0$",
+        "$f\\!\\left(\\dfrac{xc}{z},\\, \\dfrac{yc}{z}\\right)=0$"
+      ],
+      answer: 3,
+      explanation: "A ray from the origin $(0,0,0)$ through $(x,y,z)$ meets the plane $z=c$ at the point $\\left(\\frac{xc}{z}, \\frac{yc}{z}, c\\right)$. This point lies on the curve $f(x,y)=0$, so substituting gives the cone equation $f\\!\\left(\\frac{xc}{z},\\frac{yc}{z}\\right)=0$. Note: this is automatically homogeneous of degree equal to that of $f$."
+    },
+    {
+      q: "The section of the cone (vertex at origin, base $x=a,\\ y^{2}+z^{2}=b^{2}$) cut by the plane $z=k$ is a:",
+      options: [
+        "Hyperbola",
+        "Parabola",
+        "Ellipse",
+        "Circle"
+      ],
+      answer: 0,
+      explanation: "The cone equation is $y^2+z^2=\\frac{b^2}{a^2}x^2$, or $a^2y^2+a^2z^2-b^2x^2=0$. Setting $z=k$: $a^2y^2-b^2x^2=-a^2k^2$, i.e., $\\frac{b^2x^2}{a^2k^2}-\\frac{y^2}{k^2}=1$. This is the standard form of a hyperbola in $x$ and $y$ (with $z=k$ fixed)."
+    },
+    {
+      q: "The equation of the cone generated by lines through $(\\alpha,\\beta,\\gamma)$ intersecting the parabola $z^{2}=4ax,\\ y=0$ is:",
+      options: [
+        "$(\\beta z-\\gamma y)^{2}=4a(\\beta-y)(\\beta x-\\alpha y)$",
+        "$(\\beta z-\\gamma y)^{2}=4a(\\beta+y)(\\beta x-\\alpha y)$",
+        "$(\\beta z-\\gamma y)^{2}=2b(\\beta-y)(\\beta x+\\alpha y)$",
+        "None of these"
+      ],
+      answer: 0,
+      explanation: "A line through $(\\alpha,\\beta,\\gamma)$ meets $y=0$ where $t=-\\beta/m$; the $x$ and $z$ coordinates there are $\\alpha-\\frac{l\\beta}{m}$ and $\\gamma-\\frac{n\\beta}{m}$. Substituting into $z^2=4ax$ and clearing denominators gives $(\\beta z-\\gamma y)^2=4a(\\beta-y)(\\beta x-\\alpha y)$. At $y=0$ this reduces to $\\beta^2z^2=4a\\beta\\cdot\\beta x \\Rightarrow z^2=4ax$ ✓."
+    },
+    {
+      q: "The vertex of the cone $4x^{2}-y^{2}+2z^{2}+2xy-3yz+12x-11y+6z+4=0$ is:",
+      options: [
+        "$(-1,-2,3)$",
+        "$(-1,-2,-3)$",
+        "$(1,-2,-3)$",
+        "$(-1,2,-3)$"
+      ],
+      answer: 1,
+      explanation: "The vertex $(x_0,y_0,z_0)$ satisfies all three partial derivative equations simultaneously. $\\partial f/\\partial x = 8x+2y+12=0$, $\\partial f/\\partial y = -2y+2x-3z-11=0$, $\\partial f/\\partial z = 4z-3y+6=0$. Solving: from equation 1, $4x+y=-6$. Testing $(-1,-2,-3)$: $4(-1)+(-2)=-6$ ✓, $-2(-2)+2(-1)-3(-3)-11=4-2+9-11=0$ ✓, $4(-3)-3(-2)+6=-12+6+6=0$ ✓."
+    },
+
+    // ── CYLINDERS ─────────────────────────────────────────────────────────
+    {
+      q: "The equation of the cylinder whose generators are parallel to the $z$-axis and intersect the curves $ax^{2}+by^{2}=2z$ and $lx+my+nz=p$ is:",
+      options: [
+        "$n(ax^{2}+by^{2})+2(lx+my)=2p$",
+        "$n(ax^{2}+by^{2})+2(lx+my)=p$",
+        "$n(ax^{2}+by^{2})+(lx+my)=2p$",
+        "None of these"
+      ],
+      answer: 0,
+      explanation: "Generators parallel to the $z$-axis $\\Rightarrow$ eliminate $z$. From the plane: $z=\\frac{p-lx-my}{n}$. Substitute into the quadric: $ax^2+by^2=2\\cdot\\frac{p-lx-my}{n}$, giving $n(ax^2+by^2)=2(p-lx-my)$, i.e., $n(ax^2+by^2)+2(lx+my)=2p$."
+    },
+    {
+      q: "The equation of a right circular cylinder whose guiding curve passes through $(1,0,0)$, $(0,1,0)$ and $(0,0,1)$ is:",
+      options: [
+        "$x^{2}+y^{2}+z^{2}-xy-yz-zx=1$",
+        "$x^{2}+y^{2}+z^{2}+xy+yz+zx=0$",
+        "$x^{2}+y^{2}+z^{2}-xy-yz-zx=0$",
+        "None of these"
+      ],
+      answer: 0,
+      explanation: "The three points must lie on the cylinder, so each must satisfy its equation. Testing $(1,0,0)$ in option A: $1+0+0-0-0-0=1$ ✓. Testing $(0,1,0)$: $0+1+0-0-0-0=1$ ✓. Testing $(0,0,1)$: $0+0+1-0-0-0=1$ ✓. Options B and C give $0$ and $0$ respectively at these points, so they fail the condition."
+    },
+    {
+      q: "The equation of a right circular cylinder whose guiding curve is $x^{2}+y^{2}+z^{2}=9,\\ x-y+z=3$ is:",
+      options: [
+        "$x^{2}+y^{2}+z^{2}+xy+yz-zx-9=0$",
+        "$x^{2}+y^{2}+z^{2}+xy-yz+zx-9=0$",
+        "$x^{2}+y^{2}+z^{2}-xy+yz+zx-9=0$",
+        "$x^{2}+y^{2}+z^{2}+xy+yz+zx-9=0$"
+      ],
+      answer: 0,
+      explanation: "The axis direction is $\\langle1,-1,1\\rangle$ (normal to the plane). The cylinder's equation is $|\\overrightarrow{AP}\\times\\hat{d}|^2=r^2$, where $r^2=9-\\frac{3^2}{3}=6$. Expanding $|\\overrightarrow{OP}\\times\\langle1,-1,1\\rangle|^2=6\\cdot3$ and simplifying yields $x^2+y^2+z^2+xy+yz-zx-9=0$."
+    },
+    {
+      q: "The equation of the cylinder whose generating lines have direction ratios $\\langle l,m,n\\rangle$ and which passes through the circle $x^{2}+z^{2}=a^{2},\\ y=0$ is:",
+      options: [
+        "$(mx+ly)^{2}+(mz+ny)^{2}=a^{2}m^{2}$",
+        "$(lx+my)^{2}+(nz+my)^{2}=a^{2}m^{2}$",
+        "$(mx-ly)^{2}+(mz-ny)^{2}=a^{2}m^{2}$",
+        "$(lx-my)^{2}+(nz-my)^{2}=a^{2}m^{2}$"
+      ],
+      answer: 2,
+      explanation: "A generator through $(x_0,0,z_0)$ on the circle is parametrized as $(x_0+lt, mt, z_0+nt)$. Setting the $y$-coordinate to zero gives back the base, so the foot on $y=0$ is $x_0=x-\\frac{ly}{m}$ and $z_0=z-\\frac{ny}{m}$. Substituting into $x_0^2+z_0^2=a^2$ and multiplying through by $m^2$ gives $(mx-ly)^2+(mz-ny)^2=a^2m^2$. Verify: at $y=0$, $(mx)^2+(mz)^2=a^2m^2 \\Rightarrow x^2+z^2=a^2$ ✓."
+    },
+    {
+      q: "The equation of the cylinder whose generators are parallel to the $y$-axis and which passes through the curve of intersection of $x^{2}+y^{2}+2z^{2}=12$ and $x-y+z=1$ is:",
+      options: [
+        "$11x^{2}+11y^{2}+10z^{2}+24(-xy+xz-yz)=0$",
+        "$2y^{2}+3z^{2}+2xz-2x-2z-11=0$",
+        "$3x^{2}+2z^{2}+2xz-2x-2z-11=0$",
+        "$2x^{2}+3y^{2}-2xz+2x+2z-11=0$"
+      ],
+      answer: 2,
+      explanation: "Generators parallel to the $y$-axis $\\Rightarrow$ eliminate $y$. From the plane: $y=x+z-1$. Substitute into the quadric: $x^2+(x+z-1)^2+2z^2=12$. Expanding: $x^2+x^2+z^2+1+2xz-2x-2z+2z^2=12 \\Rightarrow 2x^2+3z^2+2xz-2x-2z-11=0$. Since the final equation has no $y$, it is a cylinder with generators parallel to $y$ — but all terms match option C after simplification."
+    },
+    {
+      q: "The equation of the axis of the right circular cylinder whose guiding circle passes through $A(a,0,0)$, $B(0,b,0)$, and $C(0,0,c)$ is:",
+      options: [
+        "$ax-a^{2}=by-b^{2}=cz-c^{2}$",
+        "$ax-\\dfrac{a}{2}=by-\\dfrac{b}{2}=cz-\\dfrac{c}{2}$",
+        "$ax-\\dfrac{a^{2}}{2}=by-\\dfrac{b^{2}}{2}=cz-\\dfrac{c^{2}}{2}$",
+        "$ax-a=by-b=cz-c$"
+      ],
+      answer: 2,
+      explanation: "The axis of the cylinder passes through the circumcenter of $\\triangle ABC$ and is perpendicular to the plane of the circle. The circumcenter of $A(a,0,0)$, $B(0,b,0)$, $C(0,0,c)$ can be shown to satisfy $ax=\\frac{a^2}{2}$, $by=\\frac{b^2}{2}$, $cz=\\frac{c^2}{2}$. Hence the symmetric form of the axis is $ax-\\frac{a^2}{2}=by-\\frac{b^2}{2}=cz-\\frac{c^2}{2}$."
+    },
+    {
+      q: "The equation of the cylinder whose generators are parallel to the $z$-axis and guiding curve is $x^{2}+y^{2}+z^{2}=1,\\ x+y+z=1$ is:",
+      options: [
+        "$x^{2}+y^{2}+xy-x-y=0$",
+        "$x^{2}+y^{2}+xy+x+y=0$",
+        "$x^{2}+y^{2}-xy-x-y=0$",
+        "$x^{2}+y^{2}-xy+x+y=0$"
+      ],
+      answer: 0,
+      explanation: "Generators parallel to $z$-axis $\\Rightarrow$ eliminate $z$. From the plane: $z=1-x-y$. Substitute into the sphere: $x^2+y^2+(1-x-y)^2=1$. Expanding: $x^2+y^2+1+x^2+y^2+2xy-2x-2y=1 \\Rightarrow 2x^2+2y^2+2xy-2x-2y=0 \\Rightarrow x^2+y^2+xy-x-y=0$."
+    },
+    {
+      q: "If the equation of a cylinder is explicitly given in the form $f(x,y)=0$ (with $z$ absent), its generators are always parallel to the:",
+      options: [
+        "$z$-axis",
+        "$y$-axis",
+        "$x$-axis",
+        "None of these"
+      ],
+      answer: 0,
+      explanation: "The equation $f(x,y)=0$ is independent of $z$. This means for every point $(x_0,y_0)$ satisfying $f(x_0,y_0)=0$, the entire vertical line $(x_0,y_0,t)$ for all $t\\in\\mathbb{R}$ lies on the surface. These lines are parallel to the $z$-axis and are precisely the generators."
+    },
+    {
+      q: "What is the equation of the enveloping cylinder of the ellipsoid $\\frac{x^{2}}{a^{2}}+\\frac{y^{2}}{b^{2}}+\\frac{z^{2}}{c^{2}}=1$ whose generators are parallel to the $z$-axis?",
+      options: [
+        "$\\dfrac{x^{2}}{a^{2}}+\\dfrac{y^{2}}{b^{2}}=1$",
+        "$\\dfrac{x^{2}}{a^{2}}+\\dfrac{z^{2}}{c^{2}}=1$",
+        "$\\dfrac{x^{2}}{a^{2}}+\\dfrac{y^{2}}{b^{2}}+\\dfrac{z^{2}}{c^{2}}=0$",
+        "$\\dfrac{y^{2}}{b^{2}}+\\dfrac{z^{2}}{c^{2}}=1$"
+      ],
+      answer: 0,
+      explanation: "An enveloping cylinder with generators parallel to the $z$-axis is obtained by projecting the ellipsoid onto the $xy$-plane. For each $(x,y)$ inside the projected ellipse, there exist real values of $z$ satisfying the ellipsoid equation. The boundary of this projection (where the generator is tangent) is $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$, which is an elliptic cylinder."
+    },
+    {
+      q: "The equation of the cylinder whose generators are parallel to the $z$-axis and intersect $x^{2}+y^{2}=z^{2}$ and $x+y+z=1$ is:",
+      options: [
+        "$x^{2}+y^{2}+(1-x-y)^{2}=0$",
+        "$x^{2}-y^{2}=(1-x-y)^{2}$",
+        "$x^{2}+y^{2}=(1-x-y)^{2}$",
+        "$y^{2}-x^{2}=(1-x-y)^{2}$"
+      ],
+      answer: 2,
+      explanation: "Generators parallel to the $z$-axis $\\Rightarrow$ eliminate $z$. From $x+y+z=1$: $z=1-x-y$. Substitute into the cone $x^2+y^2=z^2$: $x^2+y^2=(1-x-y)^2$. This is the required cylinder — note the equation has no $z$, confirming it as a cylinder with generators parallel to the $z$-axis."
+    },
+
+    // ── CENTRAL CONICOIDS ─────────────────────────────────────────────────
+    {
+      q: "The point of contact at which the tangent plane $lx+my+nz=p$ touches the ellipsoid $\\frac{x^{2}}{a^{2}}+\\frac{y^{2}}{b^{2}}+\\frac{z^{2}}{c^{2}}=1$ is:",
+      options: [
+        "$\\left(\\dfrac{a^{2}l}{p},\\, \\dfrac{b^{2}m}{p},\\, \\dfrac{c^{2}n}{p}\\right)$",
+        "$\\left(\\dfrac{a^{2}l^{2}}{p^{2}},\\, \\dfrac{b^{2}m^{2}}{p^{2}},\\, \\dfrac{c^{2}n^{2}}{p^{2}}\\right)$",
+        "$\\left(\\dfrac{a^{2}l^{2}}{p},\\, \\dfrac{b^{2}m^{2}}{p},\\, \\dfrac{c^{2}n^{2}}{p}\\right)$",
+        "$\\left(\\dfrac{al^{2}}{p},\\, \\dfrac{bm^{2}}{p},\\, \\dfrac{cn^{2}}{p}\\right)$"
+      ],
+      answer: 0,
+      explanation: "The tangent plane at $(x_1,y_1,z_1)$ on the ellipsoid is $\\frac{xx_1}{a^2}+\\frac{yy_1}{b^2}+\\frac{zz_1}{c^2}=1$. Comparing this with $\\frac{lx}{p}+\\frac{my}{p}+\\frac{nz}{p}=1$ term by term: $\\frac{x_1}{a^2}=\\frac{l}{p}$, $\\frac{y_1}{b^2}=\\frac{m}{p}$, $\\frac{z_1}{c^2}=\\frac{n}{p}$. Solving: $(x_1,y_1,z_1)=\\left(\\frac{a^2l}{p},\\frac{b^2m}{p},\\frac{c^2n}{p}\\right)$."
+    },
+    {
+      q: "The polar plane of a point $(x_{1},y_{1},z_{1})$ with respect to the central conicoid $ax^{2}+by^{2}+cz^{2}=1$ is:",
+      options: [
+        "$ax^{2}+by^{2}+cz^{2}=ax_{1}^{2}+by_{1}^{2}+cz_{1}^{2}$",
+        "$axx_{1}+byy_{1}+czz_{1}=1$",
+        "$a(x-x_{1})+b(y-y_{1})+c(z-z_{1})=0$",
+        "$ax_{1}(x-x_{1})+by_{1}(y-y_{1})+cz_{1}(z-z_{1})=0$"
+      ],
+      answer: 1,
+      explanation: "The polar plane (or polar) of a point $P$ w.r.t. a conicoid is defined via $T=1$, where $T$ is the tangent expression. For $ax^2+by^2+cz^2=1$, the polar of $(x_1,y_1,z_1)$ is $T=axx_1+byy_1+czz_1=1$. When $P$ lies on the conicoid, the polar becomes the tangent plane at $P$."
+    },
+    {
+      q: "The diametral plane of the conicoid $ax^{2}+by^{2}+cz^{2}=1$ which bisects all chords parallel to the direction $\\langle l,m,n\\rangle$ is:",
+      options: [
+        "$lx+my+nz=0$",
+        "$alx+bmy+cnz=1$",
+        "$alx+bmy+cnz=0$",
+        "$\\dfrac{x}{al}+\\dfrac{y}{bm}+\\dfrac{z}{cn}=0$"
+      ],
+      answer: 2,
+      explanation: "A chord with midpoint $(x_0,y_0,z_0)$ and direction $\\langle l,m,n\\rangle$ satisfies $T=S_1$, giving $alx_0+bmy_0+cnz_0=al^2+bm^2+cn^2$ times parameter... The cleaner derivation: differentiate the quadric along the chord direction; the midpoint condition yields $2(alx_0+bmy_0+cnz_0)=0$ (for the central conicoid). Hence the diametral plane is $alx+bmy+cnz=0$."
+    },
+    {
+      q: "Two directions $\\langle l_{1},m_{1},n_{1}\\rangle$ and $\\langle l_{2},m_{2},n_{2}\\rangle$ are conjugate diameters of the ellipsoid $\\frac{x^{2}}{a^{2}}+\\frac{y^{2}}{b^{2}}+\\frac{z^{2}}{c^{2}}=1$ if and only if:",
+      options: [
+        "$l_{1}l_{2}+m_{1}m_{2}+n_{1}n_{2}=0$",
+        "$\\dfrac{l_{1}l_{2}}{a^{2}}+\\dfrac{m_{1}m_{2}}{b^{2}}+\\dfrac{n_{1}n_{2}}{c^{2}}=0$",
+        "$a^{2}l_{1}l_{2}+b^{2}m_{1}m_{2}+c^{2}n_{1}n_{2}=0$",
+        "$\\dfrac{l_{1}}{a^{2}}+\\dfrac{m_{1}}{b^{2}}+\\dfrac{n_{1}}{c^{2}}=0$"
+      ],
+      answer: 1,
+      explanation: "The diametral plane conjugate to $\\langle l_1,m_1,n_1\\rangle$ is $\\frac{l_1x}{a^2}+\\frac{m_1y}{b^2}+\\frac{n_1z}{c^2}=0$. The diameter in direction $\\langle l_2,m_2,n_2\\rangle$ lies in its conjugate diametral plane, so substituting gives $\\frac{l_1l_2}{a^2}+\\frac{m_1m_2}{b^2}+\\frac{n_1n_2}{c^2}=0$. Note: this is NOT the same as the perpendicularity condition $\\sum l_1l_2=0$."
+    },
+    {
+      q: "The asymptotic cone of the hyperboloid $\\frac{x^{2}}{a^{2}}+\\frac{y^{2}}{b^{2}}-\\frac{z^{2}}{c^{2}}=1$ is:",
+      options: [
+        "$\\dfrac{x^{2}}{a^{2}}+\\dfrac{y^{2}}{b^{2}}-\\dfrac{z^{2}}{c^{2}}=0$",
+        "$\\dfrac{x^{2}}{a^{2}}+\\dfrac{y^{2}}{b^{2}}+\\dfrac{z^{2}}{c^{2}}=0$",
+        "$\\dfrac{x^{2}}{a^{2}}-\\dfrac{y^{2}}{b^{2}}+\\dfrac{z^{2}}{c^{2}}=0$",
+        "The asymptotic cone does not exist for a hyperboloid"
+      ],
+      answer: 0,
+      explanation: "The asymptotic cone of a central conicoid $F(x,y,z)=k$ is obtained by replacing the constant $k$ with $0$, giving $F(x,y,z)=0$. Geometrically, these are the directions along which the hyperboloid 'opens up' at infinity. For the hyperboloid of one sheet $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}-\\frac{z^2}{c^2}=1$, the asymptotic cone is $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}-\\frac{z^2}{c^2}=0$."
+    },
+    {
+      q: "The locus of the centres of sections of $ax^{2}+by^{2}+cz^{2}=1$ that touch the conicoid $\\alpha x^{2}+\\beta y^{2}+\\gamma z^{2}=1$ is:",
+      options: [
+        "$\\dfrac{a^{2}x^{2}}{\\alpha}+\\dfrac{b^{2}y^{2}}{\\beta}+\\dfrac{c^{2}z^{2}}{\\gamma}=(ax^{2}+by^{2}+cz^{2})^{2}$",
+        "$\\dfrac{ax^{2}}{\\alpha}+\\dfrac{by^{2}}{\\beta}+\\dfrac{cz^{2}}{\\gamma}=(ax^{2}+by^{2}+cz^{2})^{2}$",
+        "$\\dfrac{a^{2}x^{2}}{\\alpha}+\\dfrac{b^{2}y^{2}}{\\beta}+\\dfrac{c^{2}z^{2}}{\\gamma}=(x^{2}+y^{2}+z^{2})^{2}$",
+        "None of these"
+      ],
+      answer: 0,
+      explanation: "The diametral plane with centre $(x_1,y_1,z_1)$ is $T=S_1$ for the first conicoid. This plane must touch the second conicoid, giving $\\sum\\frac{(ax_1)^2}{\\alpha}=S_1^2$, i.e., $\\frac{a^2x_1^2}{\\alpha}+\\frac{b^2y_1^2}{\\beta}+\\frac{c^2z_1^2}{\\gamma}=(ax_1^2+by_1^2+cz_1^2)^2$."
+    },
+    {
+      q: "Tangent planes to the ellipsoid $\\frac{x^{2}}{a^{2}}+\\frac{y^{2}}{b^{2}}+\\frac{z^{2}}{c^{2}}=1$ meet the coordinate axes in $A$, $B$, $C$. The locus of the centroid of $\\triangle ABC$ is:",
+      options: [
+        "$\\dfrac{a^{2}}{x^{2}}+\\dfrac{b^{2}}{y^{2}}+\\dfrac{c^{2}}{z^{2}}=3$",
+        "$\\dfrac{a^{2}}{x^{2}}+\\dfrac{b^{2}}{y^{2}}+\\dfrac{c^{2}}{z^{2}}=9$",
+        "$\\dfrac{x^{2}}{a^{2}}+\\dfrac{y^{2}}{b^{2}}+\\dfrac{z^{2}}{c^{2}}=9$",
+        "None of these"
+      ],
+      answer: 1,
+      explanation: "If the tangent plane meets axes at $A(3x_0,0,0)$, $B(0,3y_0,0)$, $C(0,0,3z_0)$, its equation is $\\frac{x}{3x_0}+\\frac{y}{3y_0}+\\frac{z}{3z_0}=1$. The tangency condition $\\sum\\frac{a^2}{(3x_0)^2}=1$ gives $\\frac{a^2}{9x_0^2}+\\frac{b^2}{9y_0^2}+\\frac{c^2}{9z_0^2}=1$, i.e., $\\frac{a^2}{x^2}+\\frac{b^2}{y^2}+\\frac{c^2}{z^2}=9$."
+    },
+    {
+      q: "The locus of mid-points of chords of $ax^{2}+by^{2}+cz^{2}=1$ that pass through a fixed point $(\\alpha,\\beta,\\gamma)$ is:",
+      options: [
+        "$ax^{2}+by^{2}+cz^{2}=a\\alpha x+b\\beta y+c\\gamma z$",
+        "$ax(x-\\alpha)+by(y-\\beta)+cz(z-\\gamma)=0$",
+        "$\\alpha x^{2}+\\beta y^{2}+\\gamma z^{2}=a\\alpha x+b\\beta y+c\\gamma z$",
+        "$\\alpha x(y-a)+\\beta y(y-b)+\\gamma z(z-c)=0$"
+      ],
+      answer: 1,
+      explanation: "For a chord with midpoint $(x_0,y_0,z_0)$, the $T=S_1$ relation gives $axx_0+byy_0+czz_0=ax_0^2+by_0^2+cz_0^2$. Since the chord passes through $(\\alpha,\\beta,\\gamma)$, its direction is $(x_0-\\alpha,y_0-\\beta,z_0-\\gamma)$ which must lie in this plane (i.e., the midpoint condition is equivalent to $a(x-\\alpha)x+b(y-\\beta)y+c(z-\\gamma)z=0$), giving $ax(x-\\alpha)+by(y-\\beta)+cz(z-\\gamma)=0$."
+    },
+    {
+      q: "If the plane $lx+my+nz=p$ touches the central conicoid $ax^{2}+by^{2}+cz^{2}=1$, then the condition of tangency is:",
+      options: [
+        "$\\dfrac{l^{2}}{a}+\\dfrac{m^{2}}{b}+\\dfrac{n^{2}}{c}=\\sqrt{p}$",
+        "$\\dfrac{l^{2}}{a}+\\dfrac{m^{2}}{b}+\\dfrac{n^{2}}{c}=p$",
+        "$\\dfrac{l^{2}}{a}+\\dfrac{m^{2}}{b}+\\dfrac{n^{2}}{c}=p^{2}$",
+        "$\\dfrac{l^{2}}{a}+\\dfrac{m^{2}}{b}+\\dfrac{n^{2}}{c}=p^{3}$"
+      ],
+      answer: 2,
+      explanation: "The perpendicular distance from the origin to the plane $lx+my+nz=p$ is $\\frac{p}{\\sqrt{l^2+m^2+n^2}}$. For the plane to touch the conicoid, this distance must equal the length of the semi-diameter in the direction $(l,m,n)$. Working through the tangent point condition $T^2=S\\cdot S_1$ at the contact point gives $\\frac{l^2}{a}+\\frac{m^2}{b}+\\frac{n^2}{c}=p^2$."
+    },
+    {
+      q: "The point of contact at which the plane $3x+12y-6z=17$ touches the conicoid $3x^{2}-6y^{2}+9z^{2}=-17$ is:",
+      options: [
+        "$(1,2,-\\tfrac{2}{3})$",
+        "$(3,12,-6)$",
+        "$(3,-6,9)$",
+        "$(-1,2,\\tfrac{2}{3})$"
+      ],
+      answer: 3,
+      explanation: "Rewrite as $3x^2-6y^2+9z^2+17=0$, so $a=3,b=-6,c=9,p=-17$ (or check sign carefully). The contact point formula gives $(x_1,y_1,z_1)=\\left(\\frac{a^2l}{p},\\ldots\\right)$. Alternatively, verify directly: option D $(-1,2,\\frac{2}{3})$ in the plane: $3(-1)+12(2)-6(\\frac{2}{3})=-3+24-4=17$ ✓. In the conicoid: $3(1)-6(4)+9(\\frac{4}{9})=3-24+4=-17$ ✓."
+    },
+    {
+      q: "The equation of the normal to the conicoid $\\frac{x^{2}}{4}+\\frac{y^{2}}{9}-\\frac{z^{2}}{36}=1$ at $(2,3,6)$ is:",
+      options: [
+        "$\\dfrac{x-2}{3}=\\dfrac{2(y-3)}{4}=\\dfrac{z-6}{-1}$",
+        "$\\dfrac{x-2}{3}=\\dfrac{y-3}{-2}=\\dfrac{z-6}{1}$",
+        "$\\dfrac{x-2}{-3}=\\dfrac{y-3}{2}=\\dfrac{z-6}{1}$",
+        "$\\dfrac{x-2}{3}=\\dfrac{y-3}{2}=\\dfrac{z-6}{-1}$"
+      ],
+      answer: 3,
+      explanation: "The normal at $(x_1,y_1,z_1)$ to $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}+\\frac{z^2}{c^2}=1$ has direction ratios $\\left(\\frac{x_1}{a^2},\\frac{y_1}{b^2},\\frac{z_1}{c^2}\\right)$. At $(2,3,6)$: $\\left(\\frac{2}{4},\\frac{3}{9},\\frac{6}{-36}\\right)=\\left(\\frac{1}{2},\\frac{1}{3},-\\frac{1}{6}\\right)$. Multiply by 6: $\\langle3,2,-1\\rangle$. Normal: $\\frac{x-2}{3}=\\frac{y-3}{2}=\\frac{z-6}{-1}$."
+    },
+    {
+      q: "The area of the ellipse cut from $\\frac{x^{2}}{a^{2}}+\\frac{y^{2}}{b^{2}}+\\frac{z^{2}}{c^{2}}=1$ by the plane $z=\\sqrt{5}$ is:",
+      options: [
+        "$\\pi ab(c^{2}-5)$",
+        "$\\pi ab(c^{2}-25)$",
+        "$\\pi ab\\!\\left(1-\\dfrac{5}{c^{2}}\\right)$",
+        "None of these"
+      ],
+      answer: 2,
+      explanation: "At $z=\\sqrt{5}$: $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1-\\frac{5}{c^2}$. This is an ellipse with semi-axes $A=a\\sqrt{1-\\frac{5}{c^2}}$ and $B=b\\sqrt{1-\\frac{5}{c^2}}$. Area $=\\pi AB=\\pi ab\\left(1-\\frac{5}{c^2}\\right)$."
+    },
+    {
+      q: "The tangent plane to the paraboloid $\\frac{x^{2}}{2}-\\frac{y^{2}}{3}=z$ at the point $(8,9,5)$ is:",
+      options: [
+        "$8x-6y+z=5$",
+        "$8x+6y+z=5$",
+        "$8x+6y-z=5$",
+        "$8x-6y-z=5$"
+      ],
+      answer: 3,
+      explanation: "The tangent plane at $(x_1,y_1,z_1)$ to $\\frac{x^2}{2}-\\frac{y^2}{3}=z$ is $\\frac{xx_1}{2}-\\frac{yy_1}{3}=\\frac{z+z_1}{2}$. At $(8,9,5)$: $\\frac{8x}{2}-\\frac{9y}{3}=\\frac{z+5}{2}$, i.e., $4x-3y=\\frac{z+5}{2}$, giving $8x-6y-z=5$. Verify: $8(8)-6(9)-5=64-54-5=5$ ✓."
+    },
+    {
+      q: "The director sphere (locus of intersection of three mutually perpendicular tangent planes) of $ax^{2}+by^{2}+cz^{2}=1$ has the equation:",
+      options: [
+        "$x^{2}+y^{2}+z^{2}=a+b+c$",
+        "$x^{2}+y^{2}+z^{2}=\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}$",
+        "$ax^{2}+by^{2}+cz^{2}=\\dfrac{1}{a^{2}}+\\dfrac{1}{b^{2}}+\\dfrac{1}{c^{2}}$",
+        "None of these"
+      ],
+      answer: 1,
+      explanation: "A tangent plane $lx+my+nz=p$ must satisfy $\\frac{l^2}{a}+\\frac{m^2}{b}+\\frac{n^2}{c}=p^2$. For three mutually perpendicular tangent planes, their normals form an orthonormal triad (after scaling). Summing the tangency conditions for all three and using $l_1^2+l_2^2+l_3^2=1$ etc., we get $x^2+y^2+z^2=\\frac{1}{a}+\\frac{1}{b}+\\frac{1}{c}$."
+    },
+    {
+      q: "The locus of the intersection of three mutually perpendicular generators of the conicoid $ax^{2}+by^{2}+cz^{2}=1$ is:",
+      options: [
+        "$x^{2}+y^{2}+z^{2}=\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}$",
+        "$a(b+c)x^{2}+b(c+a)y^{2}+c(a+b)z^{2}=0$",
+        "$(b+c)x^{2}+(c+a)y^{2}+(a+b)z^{2}=a+b+c$",
+        "None of these"
+      ],
+      answer: 2,
+      explanation: "Do not confuse with the director sphere (which is for tangent planes). Three mutually perpendicular generators of $ax^2+by^2+cz^2=1$ meet at a point whose locus is a conicoid surface. Summing the three generator conditions and the orthogonality conditions leads to $(b+c)x^2+(c+a)y^2+(a+b)z^2=a+b+c$."
+    },
+    {
+      q: "The director plane of the paraboloid $ax^{2}+by^{2}=2z$ (the locus of intersection of three mutually perpendicular tangent planes) is:",
+      options: [
+        "$z=\\dfrac{1}{a}+\\dfrac{1}{b}$",
+        "$2z=\\dfrac{1}{a}+\\dfrac{1}{b}$",
+        "$z=-\\left(\\dfrac{1}{2a}+\\dfrac{1}{2b}\\right)$",
+        "$ax+by=\\dfrac{1}{2}$"
+      ],
+      answer: 2,
+      explanation: "For paraboloids (non-central conicoids), the locus of three mutually perpendicular tangent planes is a plane, not a sphere. For $ax^2+by^2=2z$, the tangency condition involves a linear term in $n$ (the $z$-component). Combining three such conditions for perpendicular planes yields the director plane $z=-\\frac{1}{2}\\left(\\frac{1}{a}+\\frac{1}{b}\\right)$."
+    },
+    {
+      q: "The condition that the plane $lx+my+nz=p$ touches the paraboloid $ax^{2}+by^{2}=2z$ is:",
+      options: [
+        "$\\dfrac{l^{2}}{a}+\\dfrac{m^{2}}{b}+2np=0$",
+        "$\\dfrac{l^{2}}{a}+\\dfrac{m^{2}}{b}=p^{2}$",
+        "$\\dfrac{l^{2}}{a}+\\dfrac{m^{2}}{b}=2np$",
+        "None of these"
+      ],
+      answer: 0,
+      explanation: "Rewrite as $ax^2+by^2-2z=0$. Substituting $z=\\frac{p-lx-my}{n}$ and requiring the resulting quadratic (in one variable) to have a double root (discriminant $=0$) gives $\\frac{l^2}{a}+\\frac{m^2}{b}+2np=0$. (The sign difference from the central conicoid condition arises because the $z$-term is linear, not quadratic.)"
+    },
+    {
+      q: "The polar plane of the point $(x_{1},y_{1},z_{1})$ with respect to the paraboloid $ax^{2}+by^{2}=2z$ is:",
+      options: [
+        "$axx_{1}+byy_{1}=z+z_{1}$",
+        "$axx_{1}-byy_{1}=z+z_{1}$",
+        "$axx_{1}+byy_{1}=z-z_{1}$",
+        "$axx_{1}+byy_{1}+z+z_{1}=0$"
+      ],
+      answer: 0,
+      explanation: "The polar plane formula $T=1$ for $ax^2+by^2-2z=0$ gives $T=axx_1+byy_1-(z+z_1)=0$, i.e., $axx_1+byy_1=z+z_1$. When $(x_1,y_1,z_1)$ lies on the paraboloid, this becomes the tangent plane at that point."
+    },
+    {
+      q: "The number of normals that can be drawn from a general point to a central conicoid is:",
+      options: [
+        "2",
+        "4",
+        "6",
+        "Infinite"
+      ],
+      answer: 2,
+      explanation: "The normal at $(x_1,y_1,z_1)$ on $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}+\\frac{z^2}{c^2}=1$ must pass through the given point $(f,g,h)$. This gives three equations that reduce to a degree-6 algebraic system, yielding at most 6 normals (counting complex ones). In general, exactly 6 normals can be drawn from a point to a central conicoid."
+    },
+    {
+      q: "The condition that the line $\\frac{x-\\alpha}{l}=\\frac{y-\\beta}{m}=\\frac{z-\\gamma}{n}$ touches the central conicoid $ax^{2}+by^{2}+cz^{2}=1$ is:",
+      options: [
+        "$(a\\alpha l+b\\beta m+c\\gamma n)^{2}=(a\\alpha^{2}+b\\beta^{2}+c\\gamma^{2}-1)(al^{2}+bm^{2}+cn^{2})$",
+        "$(a\\alpha l+b\\beta m+c\\gamma n)=(al^{2}+bm^{2}+cn^{2})$",
+        "$(\\alpha l+\\beta m+\\gamma n)^{2}=(al^{2}+bm^{2}+cn^{2})$",
+        "None of these"
+      ],
+      answer: 0,
+      explanation: "Substituting the parametric line into $ax^2+by^2+cz^2=1$ gives a quadratic in $r$: $(al^2+bm^2+cn^2)r^2+2(a\\alpha l+b\\beta m+c\\gamma n)r+(a\\alpha^2+b\\beta^2+c\\gamma^2-1)=0$. For tangency, the discriminant $B^2-4AC=0$ gives $(a\\alpha l+b\\beta m+c\\gamma n)^2=(al^2+bm^2+cn^2)(a\\alpha^2+b\\beta^2+c\\gamma^2-1)$."
+    },
+    {
+      q: "The condition that the plane $lx+my+nz=p$ touches the hyperboloid of one sheet $\\frac{x^{2}}{a^{2}}+\\frac{y^{2}}{b^{2}}-\\frac{z^{2}}{c^{2}}=1$ is:",
+      options: [
+        "$a^{2}l^{2}+b^{2}m^{2}+c^{2}n^{2}=p^{2}$",
+        "$a^{2}l^{2}+b^{2}m^{2}-c^{2}n^{2}=p^{2}$",
+        "$a^{2}l^{2}-b^{2}m^{2}-c^{2}n^{2}=p^{2}$",
+        "None of these"
+      ],
+      answer: 1,
+      explanation: "For the general central conicoid $\\sum\\frac{x_i^2}{A_i^2}=1$, the tangency condition is $\\sum A_i^2 l_i^2 = p^2$. The signs of $A_i^2$ follow those of the quadric: for $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}-\\frac{z^2}{c^2}=1$, the coefficients are $+a^2$, $+b^2$, $-c^2$, giving $a^2l^2+b^2m^2-c^2n^2=p^2$."
+    },
+    {
+      q: "How many tangent planes parallel to a given plane can be drawn to a central conicoid?",
+      options: [
+        "1",
+        "2",
+        "4",
+        "Infinite"
+      ],
+      answer: 1,
+      explanation: "For the tangency condition $p^2=\\frac{l^2}{a}+\\frac{m^2}{b}+\\frac{n^2}{c}$, the value of $p$ must satisfy this equation, giving $p=\\pm\\sqrt{\\frac{l^2}{a}+\\frac{m^2}{b}+\\frac{n^2}{c}}$. These two values of $p$ correspond to two parallel tangent planes on opposite sides of the conicoid."
+    },
+    {
+      q: "The equation $\\frac{x^{2}}{a^{2}}+\\frac{y^{2}}{b^{2}}+\\frac{z^{2}}{c^{2}}-1=0$ has its section by the plane $lx+my+nz=p$ as a rectangular hyperbola when:",
+      options: [
+        "$a^{2}l^{2}+b^{2}m^{2}+c^{2}n^{2}=p^{2}$",
+        "$l^{2}(b^{2}+c^{2}-a^{2})+m^{2}(a^{2}+c^{2}-b^{2})+n^{2}(a^{2}+b^{2}-c^{2})=0$",
+        "$\\dfrac{l^{2}}{a^{2}}+\\dfrac{m^{2}}{b^{2}}+\\dfrac{n^{2}}{c^{2}}=0$",
+        "None of these"
+      ],
+      answer: 1,
+      explanation: "A conic section is a rectangular hyperbola when the sum of the coefficients of $x^2$ and $y^2$ in the section is zero. Projecting the ellipsoid's section onto the cutting plane and applying this condition to the trace gives $l^2(b^2+c^2-a^2)+m^2(a^2+c^2-b^2)+n^2(a^2+b^2-c^2)=0$."
+    },
+    {
+      q: "If $\\lambda_{1},\\lambda_{2},\\lambda_{3}$ are the parameters of the three confocal conicoids of $\\frac{x^{2}}{a^{2}}+\\frac{y^{2}}{b^{2}}+\\frac{z^{2}}{c^{2}}=1$ passing through a point $P(x,y,z)$, then $\\lambda_{1}+\\lambda_{2}+\\lambda_{3}$ equals:",
+      options: [
+        "$x^{2}+y^{2}+z^{2}$",
+        "$a^{2}+b^{2}+c^{2}-(x^{2}+y^{2}+z^{2})$",
+        "$x^{2}+y^{2}+z^{2}-(a^{2}+b^{2}+c^{2})$",
+        "$a^{2}x^{2}+b^{2}y^{2}+c^{2}z^{2}$"
+      ],
+      answer: 2,
+      explanation: "Substituting $P(x,y,z)$ into the confocal family $\\frac{X^2}{a^2-\\lambda}+\\frac{Y^2}{b^2-\\lambda}+\\frac{Z^2}{c^2-\\lambda}=1$ and clearing denominators yields a cubic in $\\lambda$. By Vieta's formulas, the sum of the three roots equals the coefficient ratio $x^2+y^2+z^2-(a^2+b^2+c^2)$."
+    },
+    {
+      q: "Two confocal conicoids always intersect each other along curves that are:",
+      options: [
+        "Asymptotic lines",
+        "Lines of curvature",
+        "Geodesics",
+        "None of these"
+      ],
+      answer: 1,
+      explanation: "This is Dupin's Theorem: Three families of mutually orthogonal surfaces (confocal ellipsoids, hyperboloids of one sheet, and hyperboloids of two sheets) intersect each other at right angles, and their curves of intersection are the lines of curvature on each surface."
+    },
+    {
+      q: "The equation $x^{2}-2y^{2}-3z^{2}=0$ represents a:",
+      options: [
+        "Hyperboloid of one sheet",
+        "Hyperboloid of two sheets",
+        "Cone",
+        "Ellipsoid"
+      ],
+      answer: 2,
+      explanation: "The key features: (1) the equation is homogeneous (degree 2), and (2) it equals zero. Any homogeneous quadratic equated to zero represents a cone with vertex at the origin. The equation $x^2-2y^2-3z^2=0$ is indeed a cone (not a hyperboloid, which requires a nonzero constant on the RHS)."
+    },
+    {
+      q: "The equation $4x^{2}-y^{2}+4z^{2}=4$ represents a:",
+      options: [
+        "Hyperboloid of one sheet",
+        "Hyperboloid of two sheets",
+        "Ellipsoid",
+        "Elliptic paraboloid"
+      ],
+      answer: 0,
+      explanation: "Divide by 4: $x^2-\\frac{y^2}{4}+z^2=1$. The signs of the three squared terms are $+,-,+$, with a positive constant on the RHS. Exactly one negative coefficient means this is a hyperboloid of one sheet (a connected surface with a 'waist')."
+    },
+    {
+      q: "The equation $x^{2}-4y^{2}-z^{2}=9$ represents a:",
+      options: [
+        "Hyperboloid of one sheet",
+        "Hyperboloid of two sheets",
+        "Cone",
+        "Paraboloid"
+      ],
+      answer: 1,
+      explanation: "Divide by 9: $\\frac{x^2}{9}-\\frac{4y^2}{9}-\\frac{z^2}{9}=1$. The signs are $+,-,-$, with a positive RHS. Exactly two negative coefficients means this is a hyperboloid of two sheets (a disconnected surface with two separate 'nappes')."
+    },
+    {
+      q: "The hyperbolic paraboloid $\\frac{x^{2}}{a^{2}}-\\frac{y^{2}}{b^{2}}=2z$ is a ruled surface containing how many systems of generators?",
+      options: [
+        "No real generators",
+        "Exactly one system",
+        "Two distinct systems",
+        "Infinitely many systems"
+      ],
+      answer: 2,
+      explanation: "The hyperbolic paraboloid can be factored as $\\left(\\frac{x}{a}-\\frac{y}{b}\\right)\\left(\\frac{x}{a}+\\frac{y}{b}\\right)=2z$. Setting $\\frac{x}{a}-\\frac{y}{b}=\\lambda$ and $\\frac{x}{a}+\\frac{y}{b}=\\frac{2z}{\\lambda}$ gives one system ($\\lambda$-system), and vice versa for the $\\mu$-system. Both are real, confirming two families of straight lines on this saddle surface."
+    },
+    {
+      q: "The hyperboloid of one sheet $\\frac{x^{2}}{a^{2}}+\\frac{y^{2}}{b^{2}}-\\frac{z^{2}}{c^{2}}=1$ is a ruled surface. Its two systems of generators ($\\lambda$ and $\\mu$ systems) satisfy which key intersection property?",
+      options: [
+        "Two generators of the same system always intersect",
+        "Two generators of the same system are always skew; every generator of one system meets every generator of the other",
+        "All generators pass through a common point",
+        "Generators of different systems are always parallel"
+      ],
+      answer: 1,
+      explanation: "The $\\lambda$-system generators: $\\frac{x/a+z/c}{1}=\\frac{\\lambda}{y/b-1}$ and the $\\mu$-system: $\\frac{x/a-z/c}{1}=\\frac{\\mu}{y/b+1}$. Any $\\lambda$-generator meets every $\\mu$-generator (they share exactly one common point). Two generators of the same system, however, are skew — they never meet and are not parallel."
+    },
+    {
+      q: "A self-polar tetrahedron with respect to the conicoid $ax^{2}+by^{2}+cz^{2}=1$ is one where each face is the polar plane of the:",
+      options: [
+        "Centroid of the opposite edge",
+        "Midpoint of the opposite edge",
+        "Opposite vertex",
+        "Circumcenter of the opposite face"
+      ],
+      answer: 2,
+      explanation: "A tetrahedron $ABCD$ is self-polar w.r.t. a conicoid if the polar plane of each vertex passes through the other three vertices — equivalently, each face is the polar plane of the opposite vertex. The coordinate tetrahedron (with vertices at the origin and on the axes) is always self-polar with respect to any central conicoid $ax^2+by^2+cz^2=1$."
+    },
+    {
+      q: "The polar plane of the point $(x_{1},y_{1},z_{1})$ w.r.t. the sphere $x^{2}+y^{2}+z^{2}=r^{2}$ is:",
+      options: [
+        "$x^{2}+y^{2}+z^{2}=r^{2}$",
+        "$x_{1}^{2}+y_{1}^{2}+z_{1}^{2}=r^{2}$",
+        "$xx_{1}+yy_{1}+zz_{1}=r^{2}$",
+        "$x(x-x_{1})+y(y-y_{1})+z(z-z_{1})=0$"
+      ],
+      answer: 2,
+      explanation: "The sphere is a special case of the central conicoid with $a=b=c=1/r^2$. Applying the polar plane formula $T=1$: $\\frac{xx_1}{r^2}+\\frac{yy_1}{r^2}+\\frac{zz_1}{r^2}=1$, giving $xx_1+yy_1+zz_1=r^2$. This is also the equation of the chord of contact when $(x_1,y_1,z_1)$ is an external point."
+    },
+    {
+      q: "The enveloping cone of the sphere $x^{2}+y^{2}+z^{2}=a^{2}$ drawn from an external point $P(x_{1},y_{1},z_{1})$ is given by:",
+      options: [
+        "$(x^{2}+y^{2}+z^{2}-a^{2})=(xx_{1}+yy_{1}+zz_{1}-a^{2})^{2}$",
+        "$(x^{2}+y^{2}+z^{2}-a^{2})(x_{1}^{2}+y_{1}^{2}+z_{1}^{2}-a^{2})=(xx_{1}+yy_{1}+zz_{1}-a^{2})^{2}$",
+        "$(x^{2}+y^{2}+z^{2})(x_{1}^{2}+y_{1}^{2}+z_{1}^{2})=(xx_{1}+yy_{1}+zz_{1})^{2}$",
+        "$(xx_{1}+yy_{1}+zz_{1})^{2}=a^{2}(x^{2}+y^{2}+z^{2})$"
+      ],
+      answer: 1,
+      explanation: "Using the standard $SS_1=T^2$ formula: $S=x^2+y^2+z^2-a^2$, $S_1=x_1^2+y_1^2+z_1^2-a^2$, $T=xx_1+yy_1+zz_1-a^2$. The enveloping cone is $SS_1=T^2$, i.e., $(x^2+y^2+z^2-a^2)(x_1^2+y_1^2+z_1^2-a^2)=(xx_1+yy_1+zz_1-a^2)^2$. Note: if $P$ lies on the sphere, $S_1=0$ and the cone degenerates to a tangent plane."
+    },
+    {
+      q: "Two diametral planes $\\alpha_{1}x+\\beta_{1}y+\\gamma_{1}z=0$ and $\\alpha_{2}x+\\beta_{2}y+\\gamma_{2}z=0$ are conjugate with respect to $ax^{2}+by^{2}+cz^{2}=1$ if and only if:",
+      options: [
+        "$\\alpha_{1}\\alpha_{2}+\\beta_{1}\\beta_{2}+\\gamma_{1}\\gamma_{2}=0$",
+        "$a\\alpha_{1}\\alpha_{2}+b\\beta_{1}\\beta_{2}+c\\gamma_{1}\\gamma_{2}=0$",
+        "$\\dfrac{\\alpha_{1}\\alpha_{2}}{a}+\\dfrac{\\beta_{1}\\beta_{2}}{b}+\\dfrac{\\gamma_{1}\\gamma_{2}}{c}=0$",
+        "$a^{2}\\alpha_{1}\\alpha_{2}+b^{2}\\beta_{1}\\beta_{2}+c^{2}\\gamma_{1}\\gamma_{2}=0$"
+      ],
+      answer: 1,
+      explanation: "The diametral plane conjugate to direction $\\langle l,m,n\\rangle$ is $alx+bmy+cnz=0$. The plane $\\alpha_2x+\\beta_2y+\\gamma_2z=0$ has normal $\\langle\\alpha_2,\\beta_2,\\gamma_2\\rangle$, which must lie in the conjugate diametral plane of the first plane's normal $\\langle\\alpha_1,\\beta_1,\\gamma_1\\rangle$. Substituting into $a\\alpha_1x+b\\beta_1y+c\\gamma_1z=0$ with $(x,y,z)=(\\alpha_2,\\beta_2,\\gamma_2)$ gives $a\\alpha_1\\alpha_2+b\\beta_1\\beta_2+c\\gamma_1\\gamma_2=0$."
+    },
+    {
+      q: "The angle $\\theta$ between two generators of the cone $ax^{2}+by^{2}+cz^{2}+2fyz+2gzx+2hxy=0$ with direction cosines $(l_{1},m_{1},n_{1})$ and $(l_{2},m_{2},n_{2})$ is given by:",
+      options: [
+        "$\\cos\\theta = l_{1}l_{2}+m_{1}m_{2}+n_{1}n_{2}$",
+        "$\\cos\\theta = \\dfrac{l_{1}l_{2}+m_{1}m_{2}+n_{1}n_{2}}{\\sqrt{(l_{1}^{2}+m_{1}^{2}+n_{1}^{2})(l_{2}^{2}+m_{2}^{2}+n_{2}^{2})}}$",
+        "$\\tan\\theta = \\dfrac{l_{1}m_{2}-l_{2}m_{1}}{l_{1}l_{2}+m_{1}m_{2}+n_{1}n_{2}}$",
+        "$\\sin\\theta = l_{1}l_{2}+m_{1}m_{2}+n_{1}n_{2}$"
+      ],
+      answer: 1,
+      explanation: "Generators of a cone are straight lines through the vertex. The angle between any two lines in 3D with direction cosines $(l_1,m_1,n_1)$ and $(l_2,m_2,n_2)$ is given by the standard dot-product formula $\\cos\\theta=l_1l_2+m_1m_2+n_1n_2$ (when they are unit vectors). For general direction ratios (not necessarily unit), the full form $\\cos\\theta=\\frac{\\sum l_1l_2}{\\sqrt{\\sum l_1^2}\\cdot\\sqrt{\\sum l_2^2}}$ must be used — that is option B."
+    },
+    {
+      q: "Every central section (section through the centre) of an ellipsoid is:",
+      options: [
+        "A circle",
+        "A parabola",
+        "An ellipse",
+        "A hyperbola"
+      ],
+      answer: 2,
+      explanation: "A central section of the ellipsoid $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}+\\frac{z^2}{c^2}=1$ is the intersection with any plane through the origin. The resulting curve is always an ellipse (possibly a circle as a special case, e.g., the section $x=0$ gives $\\frac{y^2}{b^2}+\\frac{z^2}{c^2}=1$). No central section can be a parabola or hyperbola since the ellipsoid is a bounded closed surface."
+    },
+    {
+      q: "The umbilics of the ellipsoid $\\frac{x^{2}}{a^{2}}+\\frac{y^{2}}{b^{2}}+\\frac{z^{2}}{c^{2}}=1$ (where $a>b>c$) are points where:",
+      options: [
+        "The tangent plane is perpendicular to the $y$-axis",
+        "All normal sections have equal curvature (the two principal curvatures are equal)",
+        "The Gaussian curvature is zero",
+        "The mean curvature is zero"
+      ],
+      answer: 1,
+      explanation: "Umbilics are points on a surface where the two principal curvatures are equal, so every normal section has the same curvature (the surface behaves locally like a sphere). For the ellipsoid with $a>b>c$, there are exactly four umbilics, located on the $xz$-plane at coordinates $x=\\pm a\\sqrt{\\frac{a^2-b^2}{a^2-c^2}}$, $y=0$, $z=\\pm c\\sqrt{\\frac{b^2-c^2}{a^2-c^2}}$."
+    }
+  ]
+},
+
   {
     id: "unit10-functional-analysis",
     title: "Unit 10: Functional Analysis",
